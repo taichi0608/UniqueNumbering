@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [UnNumberController::class, 'index'])->name('home');
+Route::get('/home', [UnNumberController::class, 'create'])->name('home');
 
 /**
  * 採番マスタ
@@ -31,6 +31,8 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
     // 登録画面表示
     Route::get('UnNumber_create', [UnNumberController::class, 'create'])->name('create');
+    // 登録確認画面表示
+    Route::post('UnNumber_confirm', [UnNumberController::class, 'confirm'])->name('confirm');
     // 登録
     Route::post('UnNumber_store', [UnNumberController::class, 'store'])->name('store');
     // 詳細表示

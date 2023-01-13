@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TenantsBranchSeeder::class);
         
         $this->call(UnNumbersSeeder::class);
+
+        $this->call(DivEditsSeeder::class);
+        $this->call(DivDatesSeeder::class);
     }
 }

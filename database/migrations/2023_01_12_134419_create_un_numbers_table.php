@@ -15,6 +15,7 @@ class CreateUnNumbersTable extends Migration
     {
         Schema::create('un_numbers', function (Blueprint $table) {
             $table->id();
+            $table->integer('NumberId')->unique();
             $table->integer('NumberDiv')->unique();
             $table->integer('InitNumber');
             $table->char('Symbol', 3);
