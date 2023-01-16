@@ -3,6 +3,7 @@
 
 @section('UnNumber.content')
 <div class="container">
+<h1>登録画面</h1>
 
     @if(session('err_msg'))
         <p class="text-danger">
@@ -15,62 +16,67 @@
         <div class="col-md-12">
          <form method="POST" action="{{ route('UnNumber.confirm') }}" onSubmit="return checkSubmit()">
                 @csrf
-    
-                <!-- <input type="hidden" class="form-control" id="UpdatePerson" value=""> -->
+                <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
+                <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="施設名A">
+                <input type="hidden" name="UpdatePerson" class="form-control" id="UpdatePerson" value="後でauthに変更">
                 <div class="d-flex justify-content-xl-between">
-                    
-                    <div class="col-md-4 d-flex align-items-center">
-                        <label for="NumberId" class="form-label align-middle" style="width:200px">テナントコード</label>
-                        <input type="text" name="NumberId" class="form-control" id="NumberId" value="{{ old('NumberId') }}">
+                
+                    <div class="d-flex align-items-center">
+                        <label for="NumberId" class="form-label align-middle">テナントコード</label>
+                        <input type="text" name="NumberId" class="form-control" id="NumberId" value="11112222">
                     </div>
 
-                    <!-- <div class="">
-                        <div class="d-flex align-items-center">
-                            <p class="pe-3">テナント会社名</p>
-                            <p>テキストテキストテキストテキストテキストテキスト</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="pe-3">テナント施設名</p>
-                            <p>テキストテキストテキストテキストテキストテキスト</p>
-                        </div>
-                    </div> -->
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
 
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="NumberDiv" class="form-label" style="width:200px">採番区分</label>
+                    <div class="d-flex align-items-center">
+                        <label for="NumberDiv" class="form-label">採番区分</label>
                         <input type="text" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ old('NumberDiv') }}">
+                        @if (session('t_numberDiv') !== null)
+                            <p>{{ session('t_numberDiv') }}</p>
+                        @endif
                     </div>
     
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="InitNumber" class="form-label" style="width:200px">初期値</label>
+                    <div class="d-flex align-items-center">
+                        <label for="InitNumber" class="form-label">初期値</label>
                         <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
+                       
                     </div>
     
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="Symbol" class="form-label" style="width:200px">記号</label>
+                    <div class="d-flex align-items-center">
+                        <label for="Symbol" class="form-label">記号</label>
                         <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
                     </div>
     
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="Lengs" class="form-label" style="width:200px">有効桁数</label>
+                    <div class="d-flex align-items-center">
+                        <label for="Lengs" class="form-label">有効桁数</label>
                         <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
                     </div>
 
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="EditDiv" class="form-label" style="width:200px">編集区分</label>
+                    <div class="d-flex align-items-center">
+                        <label for="EditDiv" class="form-label">編集区分</label>
                         <input type="text" name="EditDiv" class="form-control" id="EditDiv" value="{{ old('EditDiv') }}">
+                        @if (session('t_edit') !== null)
+                            <p>{{ session('t_edit') }}</p>
+                        @endif
+                   
                     </div>
 
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="DateDiv" class="form-label" style="width:200px">日付区分</label>
+                    <div class="d-flex align-items-center">
+                        <label for="DateDiv" class="form-label">日付区分</label>
                         <input type="text" name="DateDiv" class="form-control" id="DateDiv" value="{{ old('DateDiv') }}">
+                        @if (session('t_date') !== null)
+                            <p>{{ session('t_date') }}</p>
+                        @endif
                     </div>
 
-                    <div class="d-flex align-items-center mb-2">
-                        <label for="NumberClearDiv" class="form-label" style="width:200px">採番クリア区分</label>
+                    <div class="d-flex align-items-center">
+                        <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
                         <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
+                        @if (session('t_clear') !== null)
+                            <p>{{ session('t_clear') }}</p>
+                        @endif
                     </div>
     
                 </div>
@@ -83,3 +89,4 @@
     </div>
 </div>
 @endsection
+

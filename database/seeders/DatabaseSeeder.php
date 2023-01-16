@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DivEditsSeeder::class);
         $this->call(DivDatesSeeder::class);
+        $this->call(NumberClearDivsSeeder::class);
     }
 }

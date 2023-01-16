@@ -16,6 +16,7 @@ class DivDatesSeeder extends Seeder
     {
         DB::table('div_dates')->insert([
             'id' => 1,
+            'NumberDiv_id' => '111',
             'name' => '顧客登録日',
             'date_code' => '16',
             'memo' => '会員登録された日',
@@ -24,6 +25,7 @@ class DivDatesSeeder extends Seeder
         ]);
         DB::table('div_dates')->insert([
             'id' => 2,
+            'NumberDiv_id' => '222',
             'name' => 'チェックイン日',
             'date_code' => '27',
             'memo' => 'チェックインされた日',

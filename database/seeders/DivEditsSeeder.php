@@ -16,6 +16,7 @@ class DivEditsSeeder extends Seeder
     {
         DB::table('div_edits')->insert([
             'id' => 1,
+            'NumberDiv_id' => '111',
             'name' => '日付＋予約番号',
             'edit_code' => '111',
             'memo' => '2023040711111',
@@ -24,6 +25,7 @@ class DivEditsSeeder extends Seeder
         ]);
         DB::table('div_edits')->insert([
             'id' => 2,
+            'NumberDiv_id' => '222',
             'name' => '日付＋"-"＋予約番号',
             'edit_code' => '222',
             'memo' => '20230407-11111',

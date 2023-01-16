@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDivDatesTable extends Migration
+class CreateNumberClearDivsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDivDatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('div_dates', function (Blueprint $table) {
+        Schema::create('number_clear_divs', function (Blueprint $table) {
             $table->id();
             $table->integer('NumberDiv_id');
             $table->char('name');
-            $table->integer('date_code');
+            $table->integer('clear_code');
             $table->text('memo');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateDivDatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('div_dates');
+        Schema::dropIfExists('number_clear_divs');
     }
 }

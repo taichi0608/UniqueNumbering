@@ -15,8 +15,10 @@ class CreateUnNumbersTable extends Migration
     {
         Schema::create('un_numbers', function (Blueprint $table) {
             $table->id();
-            $table->integer('NumberId')->unique();
-            $table->integer('NumberDiv')->unique();
+            $table->char('TenantCode', 4);
+            $table->char('TenantBranch', 4);
+            $table->integer('NumberId');
+            $table->char('NumberDiv',10)->unique();
             $table->integer('InitNumber');
             $table->char('Symbol', 3);
             $table->integer('Lengs');
@@ -25,7 +27,7 @@ class CreateUnNumbersTable extends Migration
             $table->integer('NumberClearDiv');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('UpdatePerson');
+            $table->text('UpdatePerson');
         });
     }
 

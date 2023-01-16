@@ -16,6 +16,8 @@ class UnNumber extends Model
     //可変項目
     protected $fillable = 
     [
+        'TenantCode',
+        'TenantBranch',
         'NumberId',
         'NumberDiv',
         'InitNumber',
@@ -28,4 +30,12 @@ class UnNumber extends Model
         'UpdatePerson',
         
     ];
+
+    public function DivDates(){
+        return $this->hasMany(DivDate::class,'NumberDiv_id');
+    }
+
+    public function DivEdits(){
+        return $this->hasMany(DivEdit::class,'NumberDiv_id');
+    }
 }

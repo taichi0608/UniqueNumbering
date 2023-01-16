@@ -31,8 +31,22 @@
         <br>
         <br>
         <br>
-
     </footer>
+    <style>
+
+        .form-control{
+            width: 300px;
+            margin-bottom: 0.5rem;
+        }
+        .form-label{
+            width: 150px;
+        }
+        .err_message{
+            width: 200px;
+            padding: 0 20px
+        }
+
+    </style>
     <script>
         function checkSubmit(){
             if(window.confirm('変更してよろしいですか？')){

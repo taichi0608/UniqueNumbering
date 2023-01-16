@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DivEdit extends Model
+class NumberClearDiv extends Model
 {
     use HasFactory;
 
     //テーブル名
-    protected $table = 'div_edits';
+    protected $table = 'number_clear_divs';
 
     //可変項目
     protected $fillable = 
     [
         'NumberDiv_id',
         'name',
-        'edit_code',
+        'clear_code',
         'memo',
         'updated_at',
     ];
