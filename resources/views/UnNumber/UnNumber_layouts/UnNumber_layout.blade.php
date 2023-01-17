@@ -28,9 +28,7 @@
         @yield('UnNumber.content')
     </main>
     <footer class="footer bg-dark  fixed-bottom">
-        <br>
-        <br>
-        <br>
+
     </footer>
     <style>
 

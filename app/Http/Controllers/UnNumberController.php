@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UnNumberRequest;
 use App\Models\UnNumber;
 use App\Models\DivDate;
 use DB;
@@ -37,7 +38,7 @@ class UnNumberController extends Controller
      * 
      * @return view
      */
-    public function confirm(Request $request)
+    public function confirm(UnNumberRequest $request)
     {
         $inputs = $request->all();
         $div_dates = DivDate::select('name')->first();
@@ -60,7 +61,6 @@ class UnNumberController extends Controller
             $t_edit = '入力された編集区分は存在しません。';
             $err_check = '1';
         }
-    
 
         //日付区分の存在チェック
         if(DB::table('div_dates')->where('NumberDiv_id', $inputs['DateDiv'])->exists() !== false ){
