@@ -17,14 +17,45 @@ class UnNumberController extends Controller
 
     public function index(Request $request)
     {
-        
+        //フォームを機能させるために各情報を取得し、viewに返す
+        $UnNumber = new UnNumber;
+        $UnNumbers = $UnNumber->getLists();
+        $searchId = $request->input('searchId');
 
-        return view(
-            'UnNumber.UnNumber_index',
-        );
-
-
+        return view('UnNumber.UnNumber_index', [
+            'UnNumbers' => $UnNumbers,
+            'searchId' => $searchId,
+        ]);
     }
+   
+    public function show(Request $request)
+    {
+        $searchId = $request->input('searchId');
+        $query = UnNumber::query();
+        //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
+        if (isset($searchId)) {
+            $query->where('NumberId',self::escapeLike($searchId));
+            $UnNumbers = $query->orderBy('updated_at', 'asc')->paginate(15);//$queryをupdated_atの昇順に並び替え
+            $tenantName = $UnNumbers->first();//会社名と施設名を表示させるために１件だけ取得
+          
+            return view('UnNumber.UnNumber_index', [
+                'UnNumbers' => $UnNumbers,
+                'searchId' => $searchId,
+                'tenantName' => $tenantName,
+            ]);
+        }
+        return view('UnNumber.UnNumber_index', [
+            'searchId' => $searchId,
+        ]);
+    }
+    
+    //「\\」「%」「_」などの記号を文字としてエスケープさせる
+    public static function escapeLike($str)
+    {
+        return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
+    }
+
+   
     public function create()
     {
         return view(
@@ -41,59 +72,15 @@ class UnNumberController extends Controller
     public function confirm(UnNumberRequest $request)
     {
         $inputs = $request->all();
-        $div_dates = DivDate::select('name')->first();
-        $err_check ='';
+      
+        //入力された値から紐づいている行を取得し、nameカラムを格納する。
+        $t_edit = DB::table('div_edits')->where('edit_code', $inputs['EditDiv'])->first()->name;
+        $t_date = DB::table('div_dates')->where('date_code', $inputs['DateDiv'])->first()->name;
+        $t_clear = DB::table('number_clear_divs')->where('clear_code', $inputs['NumberClearDiv'])->first()->name;
         
-        //採番区分の存在チェック
-        if(DB::table('un_numbers')->where('NumberDiv', $inputs['NumberDiv'])->exists() === false ){
-            $input = $inputs['NumberDiv'];
-            $t_numberDiv = '';
-        }else{
-            $t_numberDiv = '入力された編集区分は既に存在しています。別名に変更してください。';
-            $err_check = '1';
-        }
-
-        //編集区分の存在チェック
-        if(DB::table('div_edits')->where('NumberDiv_id', $inputs['EditDiv'])->exists() !== false ){
-            $input = DB::table('div_edits')->where('NumberDiv_id', $inputs['EditDiv'])->first();//数値入力から名前を返す
-            $t_edit = $input->name;
-        }else{
-            $t_edit = '入力された編集区分は存在しません。';
-            $err_check = '1';
-        }
-
-        //日付区分の存在チェック
-        if(DB::table('div_dates')->where('NumberDiv_id', $inputs['DateDiv'])->exists() !== false ){
-            $input = DB::table('div_dates')->where('NumberDiv_id', $inputs['DateDiv'])->first();//数値入力から名前を返す
-            $t_date = $input->name;
-        }else{
-            $t_date = '入力された日付区分は存在しません。';
-            $err_check = '1';
-        }
-
-        //クリア区分の存在チェック
-        if(DB::table('number_clear_divs')->where('NumberDiv_id', $inputs['NumberClearDiv'])->exists() !== false ){
-            $input = DB::table('number_clear_divs')->where('NumberDiv_id', $inputs['NumberClearDiv'])->first();//数値入力から名前を返す
-            $t_clear = $input->name;
-        }else{
-            $t_clear = '入力されたクリア区分は存在しません。';
-            $err_check = '1';
-        }
-       
-        //存在チェック後の分岐処理
-        if($err_check !== ''){
-            //データベース照合でNGが1つでもあればリダイレクトさせる
-            return redirect()
-            ->route('UnNumber.create')
-            ->with(compact('t_date', 't_edit', 't_numberDiv', 't_numberDiv', 't_clear'))//存在する値orエラーメッセージ表示
-            ->withInput();//入力されている値をセッションで渡す
-
-        }else{
-            return view(
-                'UnNumber.UnNumber_confirm',compact('inputs','div_dates', 't_date', 't_edit', 't_numberDiv', 't_clear')
-            ); 
-        }
-
+        return view(
+            'UnNumber.UnNumber_confirm',compact('inputs','t_date', 't_edit',  't_clear')
+        ); 
     }
 
     /**
@@ -101,7 +88,7 @@ class UnNumberController extends Controller
      * 
      * @return view
      */
-    public function store(Request $request)
+    public function store(UnNumberRequest $request)
     {
         // データを受け取る
         $UnNumberInputs = $request->all();

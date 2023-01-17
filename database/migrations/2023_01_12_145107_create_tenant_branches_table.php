@@ -15,9 +15,9 @@ class CreateTenantBranchesTable extends Migration
     {
         Schema::create('tenant_branches', function (Blueprint $table) {
             $table->id();
-            $table->char('TenantCode', 4);
-            $table->integer('TenantBranch')->unique();
-            $table->char('TenantBranchName', 40);
+            $table->integer('Tenant_id');
+            $table->integer('TenantBranchId')->unique();
+            $table->char('FaciliyName', 40);
             $table->timestamps();
             $table->softDeletes();
         });

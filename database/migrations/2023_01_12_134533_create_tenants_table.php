@@ -15,7 +15,7 @@ class CreateTenantsTable extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
-            $table->char('TenantCode', 4)->unique();
+            $table->integer('TenantId')->unique();
             $table->char('CompanyName', 40);
             $table->timestamps();
             $table->softDeletes();

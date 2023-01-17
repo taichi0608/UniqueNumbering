@@ -5,61 +5,75 @@
 <div class="container">
     <h2>一覧表示画面</h2>
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form class="row g-3">
 
-                <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
+    
+      <form method="GET" action="{{ route('UnNumber.show')}}">
+        @csrf
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">テナントコード： </label>
+          <!--入力-->
+          <div class="col-sm-5">
+            <input type="text" class="form-control" name="searchId" value="{{ $searchId }}">
+          </div>
+          <div class="col-sm-auto">
+            <button type="submit" class="btn btn-primary ">検索</button>
+          </div>
+        </div>     
+      </form>
+    
+    <!--検索結果テーブル 検索された時のみ表示する-->
+    @if (!empty($UnNumbers))
+    <div class="productTable">
 
-                <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                </div>
+      <div class="d-flex">
+        <div class="">
+          <p class="">テナント会社名：{{ $tenantName['TenantCode'] }}</p>
+          <p class="">テナント施設名：{{ $tenantName['TenantBranch'] }}</p>
+        </div> 
+      </div> 
 
-                <div class="col-12">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
+      <p>全{{ $UnNumbers->count() }}件</p>
+      <table class="table table-hover">
+        <thead style="background-color: #ffd900">
+          <tr>
+            <th>採番区分</th>
+            <th>初期値</th>
+            <th>記号</th>
+            <th>有効桁数</th>
+            <th>編集区分</th>
+            <th>日付区分</th>
+            <th>採番クリア区分</th>
+            <th></th>
+          </tr>
+        </thead>
+        @foreach($UnNumbers as $UnNumber)
+        <tr>
+          <td>{{ $UnNumber->NumberDiv }}</td>
+          <td>{{ $UnNumber->InitNumber }}</td>
+          <td>{{ $UnNumber->Symbol }}</td>
+          <td>{{ $UnNumber->Lengs }}</td>
+          <td>{{ $UnNumber->EditDiv }}</td>
+          <td>{{ $UnNumber->DateDiv }}</td>
+          <td>{{ $UnNumber->NumberClearDiv }}</td>
+          <td><a href="#" class="btn btn-primary btn-sm">編集・削除</a></td>
+        </tr>
+        @endforeach   
+      </table>
+    </div>
+    <!--テーブルここまで-->
+    <!--ページネーション-->
+    <div class="d-flex justify-content-center">
+      {{-- appendsでカテゴリを選択したまま遷移 --}}
+      {{ $UnNumbers->appends(request()->input())->links() }}
+    </div>
+    <!--ページネーションここまで-->
+    @endif
+        
 
-                <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
 
-                <div class="col-md-6">
-                    <label for="inputCity" class="form-label">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
 
-                <div class="col-md-4">
-                    <label for="inputState" class="form-label">State</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
 
-                <div class="col-md-2">
-                    <label for="inputZip" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
 
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Check me out
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
 @endsection

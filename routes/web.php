@@ -21,14 +21,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [UnNumberController::class, 'create'])->name('home');
+Route::get('/home', [UnNumberController::class, 'index'])->name('home');
 
 /**
  * 採番マスタ
  */
 Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
-    // 一覧表示
+    // 検索バーのみ表示
     Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
+    // 検索結果を表示
+    Route::get('UnNumber_show', [UnNumberController::class, 'show'])->name('show');
+
+    
     // 登録画面表示
     Route::get('UnNumber_create', [UnNumberController::class, 'create'])->name('create');
     // 登録確認画面表示

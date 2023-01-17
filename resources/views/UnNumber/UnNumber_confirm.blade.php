@@ -24,9 +24,6 @@
                     <label for="NumberDiv" class="form-label">採番区分</label>
                     <input type="hidden" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ $inputs['NumberDiv'] }}">
                     <p class="form-control">{{ $inputs['NumberDiv'] }}</p>
-                    @if (isset($t_numberDiv))
-                        <p class="err_message">{{ $t_numberDiv }}</p>
-                    @endif
                 </div>
 
                 <div class="d-flex align-items-center">
