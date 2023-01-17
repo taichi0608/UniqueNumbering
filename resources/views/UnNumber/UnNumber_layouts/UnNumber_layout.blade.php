@@ -19,6 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap Table -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+    
+
 </head>
 <body>
     <header>
@@ -34,7 +39,8 @@
 
         .form-control{
             width: 300px;
-            margin-bottom: 0.5rem;
+       
+            margin: 0 0.5rem 0.5rem 0;
         }
         .form-label{
             width: 150px;
@@ -61,5 +67,6 @@
             }
         }
     </script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
 </body>
 </html>

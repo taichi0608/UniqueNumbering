@@ -31,6 +31,14 @@ class UnNumber extends Model
         
     ];
 
+    //検索バー
+    public function getLists()
+    {
+        $tenants = UnNumber::pluck('NumberId');
+        return $tenants;
+    }
+
+    //リレーション関係
     public function DivDates(){
         return $this->hasMany(DivDate::class,'NumberDiv_id');
     }

@@ -18,7 +18,7 @@ class CreateUnNumbersTable extends Migration
             $table->char('TenantCode', 4);
             $table->char('TenantBranch', 4);
             $table->integer('NumberId');
-            $table->char('NumberDiv',10)->unique();
+            $table->char('NumberDiv',10);
             $table->integer('InitNumber');
             $table->char('Symbol', 3);
             $table->integer('Lengs');

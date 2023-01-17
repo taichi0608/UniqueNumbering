@@ -24,17 +24,18 @@ class UnNumberRequest extends FormRequest
     public function rules()
     {
         return [
+            //文字数指定が無いところは仮でMAX1000にしています。
             'TenantCode' => 'required|max:4',
             'TenantBranch' => 'required|max:4',
-            'NumberId' => 'required',
+            'NumberId' => 'required|max:1000',
             'NumberDiv' => 'required|max:10|unique:un_numbers,NumberDiv',//un_numbersテーブルのNumberDivカラムに入力された値が存在するならNG
-            'InitNumber' => 'required|numeric',
+            'InitNumber' => 'required|numeric|max:1000',
             'Symbol' => 'required|max:3',
-            'Lengs' => 'required|numeric',
-            'EditDiv' => 'required|numeric|exists:div_edits,NumberDiv_id',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
-            'DateDiv' => 'required|numeric|exists:div_dates,NumberDiv_id',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
-            'NumberClearDiv' => 'required|numeric',
-            'UpdatePerson' => 'required',
+            'Lengs' => 'required|numeric|max:1000',
+            'EditDiv' => 'required|numeric|exists:div_edits,edit_code|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'DateDiv' => 'required|numeric|exists:div_dates,date_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'NumberClearDiv' => 'required|numeric|exists:number_clear_divs,clear_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'UpdatePerson' => 'required|max:1000',
         ];
     }
 }
