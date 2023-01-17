@@ -37,22 +37,33 @@
                             <p>{{ session('t_numberDiv') }}</p>
                         @endif
                     </div>
+                    @if ($errors->has('NumberDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('NumberDiv') }}</div>
+                    @endif
     
                     <div class="d-flex align-items-center">
                         <label for="InitNumber" class="form-label">初期値</label>
                         <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
-                       
                     </div>
+                    @if ($errors->has('InitNumber')) 
+                        <div class="text-danger err_m">{{ $errors->first('InitNumber') }}</div>
+                    @endif
     
                     <div class="d-flex align-items-center">
                         <label for="Symbol" class="form-label">記号</label>
                         <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
                     </div>
+                    @if ($errors->has('Symbol')) 
+                        <div class="text-danger err_m">{{ $errors->first('Symbol') }}</div>
+                    @endif
     
                     <div class="d-flex align-items-center">
                         <label for="Lengs" class="form-label">有効桁数</label>
                         <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
                     </div>
+                    @if ($errors->has('Lengs')) 
+                        <div class="text-danger err_m">{{ $errors->first('Lengs') }}</div>
+                    @endif
 
                     <div class="d-flex align-items-center">
                         <label for="EditDiv" class="form-label">編集区分</label>
@@ -60,8 +71,10 @@
                         @if (session('t_edit') !== null)
                             <p>{{ session('t_edit') }}</p>
                         @endif
-                   
                     </div>
+                    @if ($errors->has('EditDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('EditDiv') }}</div>
+                    @endif
 
                     <div class="d-flex align-items-center">
                         <label for="DateDiv" class="form-label">日付区分</label>
@@ -70,6 +83,9 @@
                             <p>{{ session('t_date') }}</p>
                         @endif
                     </div>
+                    @if ($errors->has('DateDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('DateDiv') }}</div>
+                    @endif
 
                     <div class="d-flex align-items-center">
                         <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
@@ -78,10 +94,12 @@
                             <p>{{ session('t_clear') }}</p>
                         @endif
                     </div>
-    
+                    @if ($errors->has('NumberClearDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('NumberClearDiv') }}</div>
+                    @endif
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 pb-12">
                     <button type="submit" class="btn btn-primary">確 認</button>
                 </div>
             </form>

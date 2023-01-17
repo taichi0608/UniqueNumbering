@@ -78,7 +78,7 @@
                
 
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">確 認</button>
+                    <button type="submit" class="btn btn-primary">確 定</button>
                 </div>
             </form>
         </div>
