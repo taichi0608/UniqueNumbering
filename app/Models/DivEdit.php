@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UnNumber;
 
 class DivEdit extends Model
 {
@@ -15,7 +16,7 @@ class DivEdit extends Model
     //可変項目
     protected $fillable = 
     [
-        'NumberDiv_id',
+        'un_number_id',
         'name',
         'edit_code',
         'memo',

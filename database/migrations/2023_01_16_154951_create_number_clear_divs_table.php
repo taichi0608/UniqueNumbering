@@ -15,7 +15,7 @@ class CreateNumberClearDivsTable extends Migration
     {
         Schema::create('number_clear_divs', function (Blueprint $table) {
             $table->id();
-            $table->integer('NumberDiv_id');
+            $table->integer('un_number_id');
             $table->char('name');
             $table->integer('clear_code');
             $table->text('memo');

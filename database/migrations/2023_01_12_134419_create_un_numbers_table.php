@@ -22,8 +22,8 @@ class CreateUnNumbersTable extends Migration
             $table->integer('InitNumber');
             $table->char('Symbol', 3);
             $table->integer('Lengs');
-            $table->integer('EditDiv');
-            $table->integer('DateDiv');
+            $table->integer('div_edit_id')->constrained();
+            $table->integer('DateDiv')->constrained();
             $table->integer('NumberClearDiv');
             $table->timestamps();
             $table->softDeletes();

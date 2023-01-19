@@ -15,7 +15,7 @@ class CreateDivEditsTable extends Migration
     {
         Schema::create('div_edits', function (Blueprint $table) {
             $table->id();
-            $table->integer('NumberDiv_id');
+            $table->foreignId('un_number_id')->constrained('un_numbers');
             $table->char('name');
             $table->integer('edit_code');
             $table->text('memo');

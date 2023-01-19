@@ -64,10 +64,10 @@
                     </div>
 
                     <div class="d-flex align-items-center">
-                        <label for="EditDiv" class="form-label">編集区分</label>
-                        <input type="text" name="EditDiv" class="form-control" id="EditDiv" value="{{ old('EditDiv') }}">
-                        @if ($errors->has('EditDiv')) 
-                            <div class="text-danger err_m">{{ $errors->first('EditDiv') }}</div>
+                        <label for="div_edit_id" class="form-label">編集区分</label>
+                        <input type="text" name="div_edit_id" class="form-control" id="div_edit_id" value="{{ old('div_edit_id') }}">
+                        @if ($errors->has('div_edit_id')) 
+                            <div class="text-danger err_m">{{ $errors->first('div_edit_id') }}</div>
                         @endif
                     </div>
                     

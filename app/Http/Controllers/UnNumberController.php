@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UnNumberRequest;
+use App\Http\Requests\SearchRequest;
 use App\Models\UnNumber;
 use App\Models\DivDate;
+use App\Models\DivEdit;
 use DB;
 
 class UnNumberController extends Controller
@@ -14,30 +16,17 @@ class UnNumberController extends Controller
     {
         $this->middleware('auth');
     }
-
-    public function index(Request $request)
-    {
-        //フォームを機能させるために各情報を取得し、viewに返す
-        $UnNumber = new UnNumber;
-        $UnNumbers = $UnNumber->getLists();
-        $searchId = $request->input('searchId');
-
-        return view('UnNumber.UnNumber_index', [
-            'UnNumbers' => $UnNumbers,
-            'searchId' => $searchId,
-        ]);
-    }
    
-    public function show(Request $request)
+    public function index(SearchRequest $request)
     {
         $searchId = $request->input('searchId');
         $query = UnNumber::query();
+
         //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
         if (isset($searchId)) {
             $query->where('NumberId',self::escapeLike($searchId));
-            $UnNumbers = $query->orderBy('updated_at', 'asc')->paginate(15);//$queryをupdated_atの昇順に並び替え
+            $UnNumbers = $query->orderBy('updated_at', 'asc')->paginate(5);//$queryをupdated_atの昇順に並び替え 
             $tenantName = $UnNumbers->first();//会社名と施設名を表示させるために１件だけ取得
-          
             return view('UnNumber.UnNumber_index', [
                 'UnNumbers' => $UnNumbers,
                 'searchId' => $searchId,
@@ -54,14 +43,12 @@ class UnNumberController extends Controller
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
-
    
     public function create()
     {
         return view(
             'UnNumber.UnNumber_create',
         );
-
     }
 
     /**
@@ -74,7 +61,7 @@ class UnNumberController extends Controller
         $inputs = $request->all();
       
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
-        $t_edit = DB::table('div_edits')->where('edit_code', $inputs['EditDiv'])->first()->name;
+        $t_edit = DB::table('div_edits')->where('edit_code', $inputs['div_edit_id'])->first()->name;
         $t_date = DB::table('div_dates')->where('date_code', $inputs['DateDiv'])->first()->name;
         $t_clear = DB::table('number_clear_divs')->where('clear_code', $inputs['NumberClearDiv'])->first()->name;
         

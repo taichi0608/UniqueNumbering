@@ -29,10 +29,10 @@ class UnNumberRequest extends FormRequest
             'TenantBranch' => 'required|max:4',
             'NumberId' => 'required|max:1000',
             'NumberDiv' => 'required|max:10|unique:un_numbers,NumberDiv',//un_numbersテーブルのNumberDivカラムに入力された値が存在するならNG
-            'InitNumber' => 'required|numeric|max:1000',
+            'InitNumber' => 'required|numeric|max:100000000',
             'Symbol' => 'required|max:3',
             'Lengs' => 'required|numeric|max:1000',
-            'EditDiv' => 'required|numeric|exists:div_edits,edit_code|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'div_edit_id' => 'required|numeric|exists:div_edits,edit_code|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
             'DateDiv' => 'required|numeric|exists:div_dates,date_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
             'NumberClearDiv' => 'required|numeric|exists:number_clear_divs,clear_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
             'UpdatePerson' => 'required|max:1000',
