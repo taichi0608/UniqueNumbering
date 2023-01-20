@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-         <form method="POST" action="{{ route('UnNumber.store') }}" onSubmit="return checkSubmit()">
+         <form method="POST" action="{{ route('UnNumber.store') }}" onSubmit="return inputSubmit()">
                 @csrf
     
                 <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
@@ -74,8 +74,13 @@
 
                
 
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">確 定</button>
+                <div class="mt-5 d-inline-block">
+                    <button class="btn btn-secondary" onClick="history.back();">
+                        キャンセル
+                    </button>
+                    <button type="submit" class="btn btn-primary ms-4">
+                        確 定
+                    </button>
                 </div>
             </form>
         </div>

@@ -4,6 +4,12 @@
 @section('UnNumber.content')
 <div class="container">
   <h2>一覧表示画面</h2>
+  @if(session('err_msg'))
+    <p class="text-danger">
+        {{ session('err_msg') }}
+    </p>
+  @endif
+
   @if ($errors->has('searchId')) 
     <div class="text-danger err_m">{{ $errors->first('searchId') }}</div>
   @endif

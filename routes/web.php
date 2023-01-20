@@ -28,6 +28,11 @@ Route::get('/home', [UnNumberController::class, 'index'])->name('home');
  */
 Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
    
+    // テスト
+    Route::post('UnNumber_index', [UnNumberController::class, 'number'])->name('number');
+
+
+
     // 検索結果を表示
     Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
     

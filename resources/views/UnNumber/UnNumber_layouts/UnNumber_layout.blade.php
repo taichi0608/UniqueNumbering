@@ -49,6 +49,9 @@
             width: 200px;
             padding: 0 20px
         }
+        .in_active,.is_active{
+            padding: 0.5rem;
+        }
 
     </style>
     <script>
@@ -59,6 +62,14 @@
                 return false;
             }
         }
+        function inputSubmit(){
+            if(window.confirm('登録してよろしいですか？')){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    
         function checkDestroy(){
             if(window.confirm('削除してよろしいですか？')){
                 return true;

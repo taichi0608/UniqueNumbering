@@ -44,10 +44,16 @@ class UnNumberController extends Controller
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
    
+
     public function create()
     {
+
+        $s_dates = DB::table('div_dates')->get();
+        $s_edits = DB::table('div_edits')->get();
+        // dd($s_date);
+
         return view(
-            'UnNumber.UnNumber_create',
+            'UnNumber.UnNumber_create',compact('s_dates', 's_edits')
         );
     }
 
@@ -92,4 +98,46 @@ class UnNumberController extends Controller
         \Session::flash('err_msg' , '登録しました。');
         return redirect( route('home') );
     }
+
+    public function number(Request $request)
+    {
+        // データを受け取る
+        $inputs = $request->all();
+        
+        if(isset($inputs['Symbol'])){//記号が含まれた時のロジック（記号＋日付＋連番）<= 編集区分=1 なら
+            $number_count = mb_strlen($inputs['InitNumber']);
+
+            //ここから記号関連
+            $symbol_count = mb_strlen($inputs['Symbol']);//記号を文字数に変換
+            $leng = intval($inputs['Lengs']);//文字列を数値に変換
+            $leng_count = $leng - $symbol_count;//有効桁数を記号の数分減らす
+            $total_count = $symbol_count + $number_count;//記号と初期値の合計値
+            
+            if($total_count > $leng){//初期値と記号の合計が有効桁数より大きい場合
+                $replace = substr( $inputs['InitNumber'] , $leng_count, strlen($inputs['InitNumber']) - $leng_count );//指定の文字数まで先頭を除外する
+                $unNumber = $inputs['Symbol']. date('Ymd'). $replace;
+
+                // dd($unNumber,'a');
+            }elseif($leng > $total_count){
+                $replace = str_pad($inputs['InitNumber'],$leng,'0', STR_PAD_LEFT);//指定の文字数まで０で埋める
+                $unNumber = $inputs['Symbol'].date('Ymd').  $replace;
+
+                // dd($unNumber,'b');  
+            }elseif($leng = $total_count){
+                $unNumber = $inputs['Symbol']. date('Ymd').  $inputs['InitNumber'];
+
+                // dd($unNumber,'c');
+            }
+            
+        }
+
+
+       
+        // return view('UnNumber.UnNumber_create',compact('unNumber') );
+        return redirect()->route('UnNumber.create')->with(compact('unNumber'));
+    }
+
+
+
+
 }

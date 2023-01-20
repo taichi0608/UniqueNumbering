@@ -14,7 +14,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-         <form method="POST" action="{{ route('UnNumber.confirm') }}" onSubmit="return checkSubmit()">
+         <form method="POST" action="{{ route('UnNumber.confirm') }}">
                 @csrf
                 <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
                 <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="施設名A">
@@ -23,80 +23,143 @@
                 
                     <div class="d-flex align-items-center">
                         <label for="NumberId" class="form-label align-middle">テナントコード</label>
-                        <input type="text" name="NumberId" class="form-control" id="NumberId" value="11112222">
+                        <input type="text" name="NumberId" class="form-control" id="NumberId" value="1234">
                     </div>
 
                 </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="NumberDiv" class="form-label">採番区分名称</label>
+                    <input type="text" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ old('NumberDiv') }}">
+                    @if ($errors->has('NumberDiv')) 
+                    <div class="text-danger err_m">{{ $errors->first('NumberDiv') }}</div>
+                    @endif
+                </div>
+                
+
+                <div class="d-flex align-items-center">
+                    <label for="InitNumber" class="form-label">初期値</label>
+                    <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
+                    @if ($errors->has('InitNumber')) 
+                        <div class="text-danger err_m">{{ $errors->first('InitNumber') }}</div>
+                    @endif
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="Symbol" class="form-label">記号</label>
+                    <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
+                    @if ($errors->has('Symbol')) 
+                        <div class="text-danger err_m">{{ $errors->first('Symbol') }}</div>
+                    @endif
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="Lengs" class="form-label">有効桁数</label>
+                    <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
+                    @if ($errors->has('Lengs')) 
+                        <div class="text-danger err_m">{{ $errors->first('Lengs') }}</div>
+                    @endif
+                </div>
+
+                
+
+                <div class="d-flex align-items-center">
+                    <label for="div_edit_id" class="form-label">編集区分</label>
+                    <select class="form-select" id="div_edit_id" name="div_edit_id">
+                        @foreach ($s_edits as $s_edit)
+                            <option value="{{ $s_edit->name }}" 
+                            @if(old('div_edit_id') == $s_edit->name)
+                                selected
+                            @endif
+                            >{{ $s_edit->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('div_edit_id')) 
+                        <div class="text-danger err_m">{{ $errors->first('div_edit_id') }}</div>
+                    @endif
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="DateDiv" class="form-label">日付区分</label>
+                    <select class="form-select" id="DateDiv" name="DateDiv">
+                        @foreach ($s_dates as $s_date)
+                            <option value="{{ $s_date->name }}" 
+                            @if(old('DateDiv') == $s_date->name)
+                                selected
+                            @endif
+                            >{{ $s_date->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('DateDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('DateDiv') }}</div>
+                    @endif
+                </div>
+                
+
+                <div class="d-flex align-items-center">
+                    <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
+                    <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
+                    @if ($errors->has('NumberClearDiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('NumberClearDiv') }}</div>
+                    @endif
+                </div>
+
+                <div class="mt-5 d-inline-block">
+                    <a class="btn btn-secondary" href="{{ route('UnNumber.index') }}">
+                        キャンセル
+                    </a>
+                    <button type="submit" class="btn btn-primary ms-4">
+                        確 認
+                    </button>
+                </div>
+            </form>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
 
             
 
-                    <div class="d-flex align-items-center">
-                        <label for="NumberDiv" class="form-label">採番区分</label>
-                        <input type="text" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ old('NumberDiv') }}">
-                        @if ($errors->has('NumberDiv')) 
-                        <div class="text-danger err_m">{{ $errors->first('NumberDiv') }}</div>
-                        @endif
-                    </div>
-                   
-    
-                    <div class="d-flex align-items-center">
-                        <label for="InitNumber" class="form-label">初期値</label>
-                        <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
-                        @if ($errors->has('InitNumber')) 
-                            <div class="text-danger err_m">{{ $errors->first('InitNumber') }}</div>
-                        @endif
-                    </div>
-    
-                    <div class="d-flex align-items-center">
-                        <label for="Symbol" class="form-label">記号</label>
-                        <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
-                        @if ($errors->has('Symbol')) 
-                            <div class="text-danger err_m">{{ $errors->first('Symbol') }}</div>
-                        @endif
-                    </div>
-    
-                    <div class="d-flex align-items-center">
-                        <label for="Lengs" class="form-label">有効桁数</label>
-                        <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
-                        @if ($errors->has('Lengs')) 
-                            <div class="text-danger err_m">{{ $errors->first('Lengs') }}</div>
-                        @endif
-                    </div>
+            <form method="POST" action="{{ route('UnNumber.number') }}">
+                @csrf
 
-                    <div class="d-flex align-items-center">
-                        <label for="div_edit_id" class="form-label">編集区分</label>
-                        <input type="text" name="div_edit_id" class="form-control" id="div_edit_id" value="{{ old('div_edit_id') }}">
-                        @if ($errors->has('div_edit_id')) 
-                            <div class="text-danger err_m">{{ $errors->first('div_edit_id') }}</div>
-                        @endif
-                    </div>
-                    
+                <div class="d-flex align-items-center">
+                    <label for="InitNumber" class="form-label">初期値</label>
+                    <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
+                </div>
 
-                    <div class="d-flex align-items-center">
-                        <label for="DateDiv" class="form-label">日付区分</label>
-                        <input type="text" name="DateDiv" class="form-control" id="DateDiv" value="{{ old('DateDiv') }}">
-                        @if ($errors->has('DateDiv')) 
-                            <div class="text-danger err_m">{{ $errors->first('DateDiv') }}</div>
-                        @endif
-                    </div>
-                    
+                <div class="d-flex align-items-center">
+                    <label for="Symbol" class="form-label">記号</label>
+                    <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
+                </div>
 
-                    <div class="d-flex align-items-center">
-                        <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
-                        <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
-                        @if ($errors->has('NumberClearDiv')) 
-                            <div class="text-danger err_m">{{ $errors->first('NumberClearDiv') }}</div>
-                        @endif
-                    </div>
-                    
-       
+                <div class="d-flex align-items-center">
+                    <label for="Lengs" class="form-label">有効桁数</label>
+                    <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
+                </div>
 
-                <div class="col-12 pb-12">
-                    <button type="submit" class="btn btn-primary">確 認</button>
+                <div class="d-flex align-items-center">
+                    <label for="NumberClearDiv" class="form-label">編集区分</label>
+                    <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
+                </div>
+
+                <div class="mt-5 d-inline-block">
+                
+                    <button type="submit" class="btn btn-primary ms-4">
+                        確 認
+                    </button>
                 </div>
             </form>
+        
         </div>
     </div>
 </div>
+
 @endsection
 
