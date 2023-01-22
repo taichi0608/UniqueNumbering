@@ -15,9 +15,9 @@ class CreateDivEditsTable extends Migration
     {
         Schema::create('div_edits', function (Blueprint $table) {
             $table->id();
-            $table->integer('NumberDiv_id');
-            $table->char('name');
-            $table->integer('edit_code');
+            $table->integer('edit_id')->unique();
+            $table->char('edit_name');
+            $table->integer('edit_length');
             $table->text('memo');
             $table->timestamps();
         });

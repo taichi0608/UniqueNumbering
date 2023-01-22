@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DivDate;
+use App\Models\DivEdit;
+use App\Models\NumberClearDiv;
 use DB;
 
 class UnNumber extends Model
@@ -23,7 +26,7 @@ class UnNumber extends Model
         'InitNumber',
         'Symbol',
         'Lengs',
-        'EditDiv',
+        'div_edit_id',
         'DateDiv',
         'NumberClearDiv',
         'updated_at',
@@ -31,19 +34,15 @@ class UnNumber extends Model
         
     ];
 
-    //検索バー
-    public function getLists()
-    {
-        $tenants = UnNumber::pluck('NumberId');
-        return $tenants;
-    }
 
     //リレーション関係
     public function DivDates(){
-        return $this->hasMany(DivDate::class,'NumberDiv_id');
+        return $this->hasOne(DivDate::class, 'date_code', 'DateDiv');
     }
 
     public function DivEdits(){
-        return $this->hasMany(DivEdit::class,'NumberDiv_id');
+        return $this->hasOne(DivEdit::class,);
     }
 }
+
+

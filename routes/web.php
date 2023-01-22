@@ -27,11 +27,15 @@ Route::get('/home', [UnNumberController::class, 'index'])->name('home');
  * 採番マスタ
  */
 Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
-    // 検索バーのみ表示
-    Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
-    // 検索結果を表示
-    Route::get('UnNumber_show', [UnNumberController::class, 'show'])->name('show');
+   
+    // テスト
+    Route::get('test', [UnNumberController::class, 'test'])->name('test');
+    Route::post('input', [UnNumberController::class, 'input'])->name('input');
 
+
+
+    // 検索結果を表示
+    Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
     
     // 登録画面表示
     Route::get('UnNumber_create', [UnNumberController::class, 'create'])->name('create');

@@ -2,10 +2,11 @@
 @section('UnNumber.UnNumber_layouts.UnNumber_layout.title', '採番マスタ：登録確認画面')
 
 @section('UnNumber.content')
+<div class="">{{ $unNumber }}</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-         <form method="POST" action="{{ route('UnNumber.store') }}" onSubmit="return checkSubmit()">
+         <form method="POST" action="{{ route('UnNumber.store') }}" onSubmit="return inputSubmit()">
                 @csrf
     
                 <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
@@ -45,9 +46,9 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="EditDiv" class="form-label">編集区分</label>
-                    <input type="hidden" name="EditDiv" class="form-control" id="EditDiv" value="{{ $inputs['EditDiv'] }}">
-                    <p class="form-control">{{ $inputs['EditDiv'] }}</p>
+                    <label for="div_edit_id" class="form-label">編集区分</label>
+                    <input type="hidden" name="div_edit_id" class="form-control" id="div_edit_id" value="{{ $inputs['div_edit_id'] }}">
+                    <p class="form-control">{{ $inputs['div_edit_id'] }}</p>
                     @if (isset($t_edit))
                         <p class="err_message">{{ $t_edit }}</p>
                     @endif     
@@ -74,8 +75,13 @@
 
                
 
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">確 定</button>
+                <div class="mt-5 d-inline-block">
+                    <button class="btn btn-secondary" onClick="history.back();">
+                        キャンセル
+                    </button>
+                    <button type="submit" class="btn btn-primary ms-4">
+                        確 定
+                    </button>
                 </div>
             </form>
         </div>

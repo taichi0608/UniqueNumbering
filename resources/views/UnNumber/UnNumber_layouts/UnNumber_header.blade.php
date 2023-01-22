@@ -11,8 +11,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-               
+                <li class="nav_item {{ (url()->current() == route('UnNumber.index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.index') }}">一覧表示</a></li>
+                <li class="nav_item {{ (url()->current() == route('UnNumber.create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.create') }}">新規登録</a></li>
+                <li class="nav_item {{ (url()->current() == route('UnNumber.test'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.test') }}">テスト</a></li>
             </ul>
+
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
