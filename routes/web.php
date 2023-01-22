@@ -29,7 +29,8 @@ Route::get('/home', [UnNumberController::class, 'index'])->name('home');
 Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
    
     // テスト
-    Route::post('UnNumber_index', [UnNumberController::class, 'number'])->name('number');
+    Route::get('test', [UnNumberController::class, 'test'])->name('test');
+    Route::post('input', [UnNumberController::class, 'input'])->name('input');
 
 
 

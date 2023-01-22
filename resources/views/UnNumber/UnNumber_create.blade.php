@@ -113,49 +113,6 @@
                     </button>
                 </div>
             </form>
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-
-
-            
-
-            <form method="POST" action="{{ route('UnNumber.number') }}">
-                @csrf
-
-                <div class="d-flex align-items-center">
-                    <label for="InitNumber" class="form-label">初期値</label>
-                    <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="Symbol" class="form-label">記号</label>
-                    <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="Lengs" class="form-label">有効桁数</label>
-                    <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="NumberClearDiv" class="form-label">編集区分</label>
-                    <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
-                </div>
-
-                <div class="mt-5 d-inline-block">
-                
-                    <button type="submit" class="btn btn-primary ms-4">
-                        確 認
-                    </button>
-                </div>
-            </form>
         
         </div>
     </div>
