@@ -99,42 +99,171 @@ class UnNumberController extends Controller
         return redirect( route('home') );
     }
 
-    public function number(Request $request)
-    {
-        // データを受け取る
-        $inputs = $request->all();
-        
-        if(isset($inputs['Symbol'])){//記号が含まれた時のロジック（記号＋日付＋連番）<= 編集区分=1 なら
-            $number_count = mb_strlen($inputs['InitNumber']);
 
+
+
+
+
+
+
+
+
+    //編集区分のロジック
+    public function test()
+    {
+        return view(
+            'UnNumber.test'
+        );
+    }
+
+    public function input(Request $request)
+    {
+        
+        $inputs = $request->all();// POSTされたデータを受け取る
+        //初期値である
+        
+        //予約番号　のみ
+        if($inputs['NumberClearDiv'] == "1"){//編集区分 = 1 
+            $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
+            $length = intval($inputs['Lengs']);//文字列を数値に変換
+            
+            if($number_count > $length){//初期値の合計が有効桁数より大きい場合
+                $d_length = $number_count - $length;//初期値と有効桁数の差分を代入する
+                $replace = substr( $inputs['InitNumber'] , $d_length, strlen($inputs['InitNumber']) - $d_length );//指定の文字数まで先頭を除外する
+                $unNumber = $replace;
+
+                dd($unNumber,'A');
+            }elseif($length > $number_count){
+                $replace = str_pad($inputs['InitNumber'],$length,'0', STR_PAD_LEFT);//有効桁数まで０で埋める
+                $unNumber = $replace;
+
+                dd($unNumber,'B');  
+            }elseif($length = $number_count){
+                $unNumber = $inputs['InitNumber'];
+
+                dd($unNumber,'C');
+            }
+            return view(
+                'UnNumber.input',compact('unNumber')
+            ); 
+        }
+
+        //日付＋予約番号　　
+        if($inputs['NumberClearDiv'] == "2"){//編集区分 = 2 
+            $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
+            $length = intval($inputs['Lengs']);//文字列を数値に変換
+            
+            if($number_count > $length){//初期値の合計が有効桁数より大きい場合
+                $d_length = $number_count - $length;//初期値と有効桁数の差分を代入する
+                $replace = substr( $inputs['InitNumber'] , $d_length, strlen($inputs['InitNumber']) - $d_length );//指定の文字数まで先頭を除外する
+                $unNumber = date('Ymd'). $replace;
+
+                dd($unNumber,'D');
+            }elseif($length > $number_count){
+                $replace = str_pad($inputs['InitNumber'],$length,'0', STR_PAD_LEFT);//有効桁数まで０で埋める
+                $unNumber = date('Ymd'). $replace;
+
+                dd($unNumber,'E');  
+            }elseif($length = $number_count){
+                $unNumber = date('Ymd'). $inputs['InitNumber'];
+
+                dd($unNumber,'F');
+            }
+            return view(
+                'UnNumber.input',compact('unNumber')
+            ); 
+        }
+
+        //日付 + "-" + 予約番号　　
+        if($inputs['NumberClearDiv'] == "3"){//編集区分 = 3 
+            $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
+            $length = intval($inputs['Lengs']);//文字列を数値に変換
+            
+            if($number_count > $length){//初期値の合計が有効桁数より大きい場合
+                $d_length = $number_count - $length;//初期値と有効桁数の差分を代入する
+                $replace = substr( $inputs['InitNumber'] , $d_length, strlen($inputs['InitNumber']) - $d_length );//指定の文字数まで先頭を除外する
+                $unNumber = date('Ymd'). "-". $replace;
+
+                dd($unNumber,'G');
+            }elseif($length > $number_count){
+                $replace = str_pad($inputs['InitNumber'],$length,'0', STR_PAD_LEFT);//有効桁数まで０で埋める
+                $unNumber = date('Ymd'). "-". $replace;
+
+                dd($unNumber,'H');  
+            }elseif($length = $number_count){
+                $unNumber = date('Ymd'). "-". $inputs['InitNumber'];
+
+                dd($unNumber,'I');
+            }
+            return view(
+                'UnNumber.input',compact('unNumber')
+            ); 
+        }
+
+        //記号＋予約番号
+        if($inputs['NumberClearDiv'] === "4"){//編集区分 = 4 
+            $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             //ここから記号関連
             $symbol_count = mb_strlen($inputs['Symbol']);//記号を文字数に変換
-            $leng = intval($inputs['Lengs']);//文字列を数値に変換
-            $leng_count = $leng - $symbol_count;//有効桁数を記号の数分減らす
+            $length = intval($inputs['Lengs']);//文字列を数値に変換
             $total_count = $symbol_count + $number_count;//記号と初期値の合計値
             
-            if($total_count > $leng){//初期値と記号の合計が有効桁数より大きい場合
-                $replace = substr( $inputs['InitNumber'] , $leng_count, strlen($inputs['InitNumber']) - $leng_count );//指定の文字数まで先頭を除外する
-                $unNumber = $inputs['Symbol']. date('Ymd'). $replace;
+            if($total_count > $length){//初期値と記号の合計が有効桁数より大きい場合
+                $d_length = $total_count - $length;//記号と初期値の合計値 - 有効桁数 （初期値を減らす目的）
+                $replace = substr( $inputs['InitNumber'] , $d_length, strlen($inputs['InitNumber']) - $d_length );//指定の文字数まで先頭を除外する
+                $unNumber = $inputs['Symbol']. $replace;
 
-                // dd($unNumber,'a');
-            }elseif($leng > $total_count){
-                $replace = str_pad($inputs['InitNumber'],$leng,'0', STR_PAD_LEFT);//指定の文字数まで０で埋める
-                $unNumber = $inputs['Symbol'].date('Ymd').  $replace;
+                // dd($unNumber,'J');
+            }elseif($length > $total_count){
+                $c_length = $length - $symbol_count;//有効桁数 - 記号数 （初期値に対してのみ記号の数を引いた有効桁数分の０を追加する目的）
+                $replace = str_pad($inputs['InitNumber'],$c_length,'0', STR_PAD_LEFT);//指定の文字数まで０で埋める
+                $unNumber = $inputs['Symbol']. $replace;
 
-                // dd($unNumber,'b');  
-            }elseif($leng = $total_count){
-                $unNumber = $inputs['Symbol']. date('Ymd').  $inputs['InitNumber'];
+                // dd($unNumber,'K');  
+            }elseif($length = $total_count){
+                $unNumber = $inputs['Symbol']. $inputs['InitNumber'];
 
-                // dd($unNumber,'c');
+                // dd($unNumber,'L');
             }
+            return view(
+                'UnNumber.input',compact('unNumber')
+            ); 
+        }
+
+        //記号＋日付＋連番
+        if($inputs['NumberClearDiv'] === "5"){//編集区分 = 5 
+            $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
+            //ここから記号関連
+            $symbol_count = mb_strlen($inputs['Symbol']);//記号を文字数に変換
+            $length = intval($inputs['Lengs']);//文字列を数値に変換
+            $total_count = $symbol_count + $number_count;//記号と初期値の合計値
             
+            if($total_count > $length){//初期値と記号の合計が有効桁数より大きい場合
+                $d_length = $total_count - $length;//記号と初期値の合計値 - 有効桁数 （初期値を減らす目的）
+                $replace = substr( $inputs['InitNumber'] , $d_length, strlen($inputs['InitNumber']) - $d_length );//指定の文字数まで先頭を除外する
+                $unNumber = $inputs['Symbol']."-". date('Ymd')."-". $replace;
+
+                // dd($unNumber,'O');
+            }elseif($length > $total_count){
+                $c_length = $length - $symbol_count;//有効桁数 - 記号数 （初期値に対してのみ記号の数を引いた有効桁数分の０を追加する目的）
+                $replace = str_pad($inputs['InitNumber'],$c_length,'0', STR_PAD_LEFT);//指定の文字数まで０で埋める
+                $unNumber = $inputs['Symbol']."-".date('Ymd')."-".  $replace;
+
+                // dd($unNumber,'P');  
+            }elseif($length = $total_count){
+                $unNumber = $inputs['Symbol']."-". date('Ymd')."-".  $inputs['InitNumber'];
+
+                // dd($unNumber,'Q');
+            }
+            return view(
+                'UnNumber.input',compact('unNumber')
+            ); 
         }
 
 
-       
-        // return view('UnNumber.UnNumber_create',compact('unNumber') );
-        return redirect()->route('UnNumber.create')->with(compact('unNumber'));
+       dd('da');
+        return view('UnNumber.test');
+        // return redirect()->route('UnNumber.create')->with(compact('unNumber'));
     }
 
 
