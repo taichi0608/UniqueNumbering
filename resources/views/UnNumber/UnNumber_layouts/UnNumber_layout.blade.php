@@ -37,7 +37,8 @@
     </footer>
     <style>
 
-        .form-control{
+        .form-control,
+        .form-select{
             width: 300px;
        
             margin: 0 0.5rem 0.5rem 0;

@@ -25,12 +25,14 @@ class UnNumber extends Model
         'NumberDiv',
         'InitNumber',
         'Symbol',
+        'edit_id',
+        'edit_name',
         'Lengs',
-        'div_edit_id',
+      
         'DateDiv',
-        'NumberClearDiv',
+  
         'updated_at',
-        'UpdatePerson',
+ 
         
     ];
 

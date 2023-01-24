@@ -22,13 +22,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '予約NO.',
             'InitNumber' => '1',
             'Symbol' => 'Q',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '1',
+            'edit_name' => '予約番号のみ',
+            'Lengs' => '15',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+       
         ]);
         DB::table('un_numbers')->insert([
             'id' => 2,
@@ -38,13 +38,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '予約NO.',
             'InitNumber' => '1',
             'Symbol' => 'S',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '2',
+            'edit_name' => '日付＋予約番号',
+            'Lengs' => '7',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+        
         ]);
         DB::table('un_numbers')->insert([
             'id' => 3,
@@ -54,13 +54,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '予約NO.',
             'InitNumber' => '1',
             'Symbol' => 'E',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '3',
+            'edit_name' => '日付＋"-"＋予約番号',
+            'Lengs' => '6',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+         
         ]);
         DB::table('un_numbers')->insert([
             'id' => 4,
@@ -70,13 +70,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '予約NO.',
             'InitNumber' => '1',
             'Symbol' => 'L',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+        
         ]);
         DB::table('un_numbers')->insert([
             'id' => 5,
@@ -86,13 +86,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '利用NO.',
             'InitNumber' => '1',
             'Symbol' => 'B',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '5',
+            'edit_name' => '記号＋日付＋予約番号',
+            'Lengs' => '7',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+        
         ]);
         DB::table('un_numbers')->insert([
             'id' => 6,
@@ -102,13 +102,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '利用個別NO.',
             'InitNumber' => '1',
             'Symbol' => 'K',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '5',
+            'edit_name' => '記号＋日付＋予約番号',
+            'Lengs' => '7',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+       
         ]);
         DB::table('un_numbers')->insert([
             'id' => 7,
@@ -118,13 +118,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '顧客NO.',
             'InitNumber' => '1',
             'Symbol' => 'J',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+        
         ]);
         DB::table('un_numbers')->insert([
             'id' => 8,
@@ -134,13 +134,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '会員NO.',
             'InitNumber' => '1',
             'Symbol' => 'G',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+         
         ]);
         DB::table('un_numbers')->insert([
             'id' => 9,
@@ -150,13 +150,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '会員NO.',
             'InitNumber' => '1',
             'Symbol' => 'T',
-            'Lengs' => '10',
-            'div_edit_id' => '2',
+            'edit_id' => '3',
+            'edit_name' => '日付＋"-"＋予約番号',
+            'Lengs' => '6',
             'DateDiv' => '2',
-            'NumberClearDiv' => '2',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+         
         ]);
         DB::table('un_numbers')->insert([
             'id' => 10,
@@ -166,13 +166,13 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => '特殊NO.',
             'InitNumber' => '1',
             'Symbol' => 'TT',
-            'Lengs' => '10',
-            'div_edit_id' => '1',
+            'edit_id' => '3',
+            'edit_name' => '日付＋"-"＋予約番号',
+            'Lengs' => '6',
             'DateDiv' => '1',
-            'NumberClearDiv' => '1',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+          
         ]);
         DB::table('un_numbers')->insert([
             'id' => 11,
@@ -182,13 +182,83 @@ class UnNumbersSeeder extends Seeder
             'NumberDiv' => 'VIP会員NO.',
             'InitNumber' => '1',
             'Symbol' => 'VIP',
-            'Lengs' => '10',
-            'div_edit_id' => '2',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
             'DateDiv' => '1',
-            'NumberClearDiv' => '3',
             'created_at'=>'2033-11-16 14:26:37',
             'updated_at'=>'2033-11-16 14:26:37',
-            'UpdatePerson'=>'1',
+         
         ]);
+
+        DB::table('un_numbers')->insert([
+            'id' => 12,
+            'TenantCode' => '日本旅行',
+            'TenantBranch' => '九州支店',
+            'NumberId' => '33333333',
+            'NumberDiv' => 'VIP会員NO.',
+            'InitNumber' => '1',
+            'Symbol' => 'VIP',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
+            'DateDiv' => '1',
+            'created_at'=>'2033-11-16 14:26:37',
+            'updated_at'=>'2033-11-16 14:26:37',
+         
+        ]);
+
+        DB::table('un_numbers')->insert([
+            'id' => 13,
+            'TenantCode' => '楽天',
+            'TenantBranch' => '関西支店',
+            'NumberId' => '22222222',
+            'NumberDiv' => 'VIP会員',
+            'InitNumber' => '1',
+            'Symbol' => 'V',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
+            'DateDiv' => '1',
+            'created_at'=>'2033-11-16 14:26:37',
+            'updated_at'=>'2033-11-16 14:26:37',
+         
+        ]);
+
+        DB::table('un_numbers')->insert([
+            'id' => 14,
+            'TenantCode' => '日本旅行',
+            'TenantBranch' => '東京本社',
+            'NumberId' => '33331111',
+            'NumberDiv' => '会員',
+            'InitNumber' => '1',
+            'Symbol' => 'IP',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
+            'DateDiv' => '1',
+            'created_at'=>'2033-11-16 14:26:37',
+            'updated_at'=>'2033-11-16 14:26:37',
+         
+        ]);
+
+        DB::table('un_numbers')->insert([
+            'id' => 15,
+            'TenantCode' => '日本旅行',
+            'TenantBranch' => '関西支店',
+            'NumberId' => '33332222',
+            'NumberDiv' => '会',
+            'InitNumber' => '1',
+            'Symbol' => 'P',
+            'edit_id' => '4',
+            'edit_name' => '記号＋予約番号',
+            'Lengs' => '15',
+            'DateDiv' => '1',
+            'created_at'=>'2033-11-16 14:26:37',
+            'updated_at'=>'2033-11-16 14:26:37',
+         
+        ]);
+       
+       
     }
 }
