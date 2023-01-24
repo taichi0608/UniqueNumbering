@@ -67,11 +67,11 @@
                     <label for="div_edit_id" class="form-label">編集区分</label>
                     <select class="form-select" id="div_edit_id" name="div_edit_id">
                         @foreach ($s_edits as $s_edit)
-                            <option value="{{ $s_edit->name }}" 
-                            @if(old('div_edit_id') == $s_edit->name)
+                            <option value="{{ $s_edit->edit_name }}" 
+                            @if(old('div_edit_id') == $s_edit->edit_name)
                                 selected
                             @endif
-                            >{{ $s_edit->name }}</option>
+                            >{{ $s_edit->edit_name }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('div_edit_id')) 

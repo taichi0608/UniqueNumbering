@@ -15,19 +15,18 @@ class CreateUnNumbersTable extends Migration
     {
         Schema::create('un_numbers', function (Blueprint $table) {
             $table->id();
+            $table->integer('NumberId');//会社＋施設コード（仮）
             $table->char('TenantCode', 4);
             $table->char('TenantBranch', 4);
-            $table->integer('NumberId');
-            $table->char('NumberDiv',10);
-            $table->integer('InitNumber');
+            $table->integer('InitNumber');//最新のクリエイトのInitNumber＋１
+            $table->char('NumberDiv',10);//任意で付けた予約名称
             $table->char('Symbol', 3);
+            $table->integer('edit_id');
+            $table->char('edit_name', 20);
             $table->integer('Lengs');
-            $table->integer('div_edit_id')->constrained();
             $table->integer('DateDiv')->constrained();
-            $table->integer('NumberClearDiv');
             $table->timestamps();
             $table->softDeletes();
-            $table->text('UpdatePerson');
         });
     }
 

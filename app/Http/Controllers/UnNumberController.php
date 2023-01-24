@@ -66,10 +66,11 @@ class UnNumberController extends Controller
     {
         $inputs = $request->all();
       
+ 
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
         $t_edit = DB::table('div_edits')->where('edit_code', $inputs['div_edit_id'])->first()->name;
         $t_date = DB::table('div_dates')->where('date_code', $inputs['DateDiv'])->first()->name;
-        $t_clear = DB::table('number_clear_divs')->where('clear_code', $inputs['NumberClearDiv'])->first()->name;
+        $t_clear = DB::table('number_clear_divs')->where('clear_code', $inputs['edit_number'])->first()->name;
         
         return view(
             'UnNumber.UnNumber_confirm',compact('inputs','t_date', 't_edit',  't_clear')
@@ -86,6 +87,7 @@ class UnNumberController extends Controller
         // データを受け取る
         $UnNumberInputs = $request->all();
 
+    
         DB::beginTransaction();
         try{
             // データを登録
@@ -109,21 +111,62 @@ class UnNumberController extends Controller
 
 
     //編集区分のロジック
-    public function test()
+
+    public function edit_create()
     {
+        // $latestUmberId = UnNumber::where();
+        $s_edits = DB::table('div_edits')->get();
         return view(
-            'UnNumber.test'
+            'UnNumber.edit_create', compact('s_edits')
         );
     }
 
+    public function edit_confirm(Request $request)
+    {
+        $inputs = $request->all();
+        // dd($inputs);
+        
+        //入力された値から紐づいている行を取得し、nameカラムを格納する。
+        $t_edit = DB::table('div_edits')->where('edit_id', $inputs['edit_id'])->first();
+        // dd($t_edit);
+ 
+        
+        return view(
+            'UnNumber.edit_confirm',compact('inputs','t_edit', )
+        ); 
+    }
+
+    public function edit_store(Request $request)
+    {
+        // データを受け取る
+        $UnNumberInputs = $request->all();
+
+        // dd($UnNumberInputs);
+        // データを登録
+        UnNumber::create($UnNumberInputs);
+        DB::commit();
+        DB::beginTransaction();
+        try{
+        }catch(\Throwable $e){
+            DB::rollback();
+            abort(500);
+        }
+        \Session::flash('err_msg' , '登録しました。');
+        return redirect( route('home') );
+    }
+
+
+
+
+    
     public function input(Request $request)
     {
         
         $inputs = $request->all();// POSTされたデータを受け取る
         //初期値である
         
-        //予約番号　のみ
-        if($inputs['NumberClearDiv'] == "1"){//編集区分 = 1 
+        //予約番号 のみ
+        if($inputs['edit_number'] == "1"){//編集区分 = 1 
             $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             $length = intval($inputs['Lengs']);//文字列を数値に変換
             
@@ -148,8 +191,8 @@ class UnNumberController extends Controller
             ); 
         }
 
-        //日付＋予約番号　　
-        if($inputs['NumberClearDiv'] == "2"){//編集区分 = 2 
+        //日付＋予約番号
+        if($inputs['edit_number'] == "2"){//編集区分 = 2 
             $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             $length = intval($inputs['Lengs']);//文字列を数値に変換
             
@@ -174,8 +217,8 @@ class UnNumberController extends Controller
             ); 
         }
 
-        //日付 + "-" + 予約番号　　
-        if($inputs['NumberClearDiv'] == "3"){//編集区分 = 3 
+        //日付 + "-" + 予約番号
+        if($inputs['edit_number'] == "3"){//編集区分 = 3 
             $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             $length = intval($inputs['Lengs']);//文字列を数値に変換
             
@@ -201,7 +244,7 @@ class UnNumberController extends Controller
         }
 
         //記号＋予約番号
-        if($inputs['NumberClearDiv'] === "4"){//編集区分 = 4 
+        if($inputs['edit_number'] === "4"){//編集区分 = 4 
             $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             //ここから記号関連
             $symbol_count = mb_strlen($inputs['Symbol']);//記号を文字数に変換
@@ -231,7 +274,7 @@ class UnNumberController extends Controller
         }
 
         //記号＋日付＋連番
-        if($inputs['NumberClearDiv'] === "5"){//編集区分 = 5 
+        if($inputs['edit_number'] === "5"){//編集区分 = 5 
             $number_count = mb_strlen($inputs['InitNumber']);//初期値を文字数に変換
             //ここから記号関連
             $symbol_count = mb_strlen($inputs['Symbol']);//記号を文字数に変換

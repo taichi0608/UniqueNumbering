@@ -60,12 +60,11 @@
           <td>{{ $UnNumber->InitNumber }}</td>
           <td>{{ $UnNumber->Symbol }}</td>
           <td>{{ $UnNumber->Lengs }}</td>
-          <td>{{ $UnNumber->div_edit_id }}</td>
+          <td>{{ $UnNumber->edit_name }}</td>
         
        
           <td>{{ $UnNumber->DateDiv }}</td>
     
-          <td>{{ $UnNumber->NumberClearDiv }}</td>
           <td><a href="#" class="btn btn-primary btn-sm">編集・削除</a></td>
         </tr>
         @endforeach

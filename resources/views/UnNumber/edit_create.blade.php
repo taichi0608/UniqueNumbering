@@ -3,7 +3,7 @@
 
 @section('UnNumber.content')
 <div class="container">
-<h1>テスト画面</h1>
+<h1>テスト登録画面</h1>
 
     @if(session('err_msg'))
         <p class="text-danger">
@@ -14,12 +14,12 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form method="POST" action="{{ route('UnNumber.input') }}">
+            <form method="POST" action="{{ route('UnNumber.edit_confirm') }}">
                 @csrf
 
                 <div class="d-flex align-items-center">
-                    <label for="InitNumber" class="form-label">初期値</label>
-                    <input type="text" name="InitNumber" class="form-control" id="InitNumber" value="{{ old('InitNumber') }}">
+                    <label for="InitNumber" class="form-label">登録名称</label>
+                    <input type="text" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ old('NumberDiv') }}">
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -28,15 +28,22 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="Lengs" class="form-label">有効桁数</label>
-                    <input type="text" name="Lengs" class="form-control" id="Lengs" value="{{ old('Lengs') }}">
+                    <label for="edit_id" class="form-label">編集区分</label>
+                    <select class="form-select" id="edit_id" name="edit_id">
+                        @foreach ($s_edits as $s_edit)
+                            <option value="{{ $s_edit->edit_id }}" 
+                            @if(old('edit_id') == $s_edit->edit_name)
+                                selected
+                            @endif
+                            >{{ $s_edit->edit_name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('edit_id')) 
+                        <div class="text-danger err_m">{{ $errors->first('edit_id') }}</div>
+                    @endif
                 </div>
 
-                <div class="d-flex align-items-center">
-                    <label for="NumberClearDiv" class="form-label">編集区分</label>
-                    <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
-                </div>
-
+                
                 <div class="mt-5 d-inline-block">
                 
                     <button type="submit" class="btn btn-primary ms-4">
