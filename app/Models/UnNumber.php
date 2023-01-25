@@ -30,10 +30,9 @@ class UnNumber extends Model
         'Lengs',
       
         'DateDiv',
-  
+        'date_name',
         'updated_at',
- 
-        
+
     ];
 
 

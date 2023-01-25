@@ -25,6 +25,7 @@ class CreateUnNumbersTable extends Migration
             $table->char('edit_name', 20);
             $table->integer('Lengs');
             $table->integer('DateDiv')->constrained();
+            $table->char('date_name');
             $table->timestamps();
             $table->softDeletes();
         });

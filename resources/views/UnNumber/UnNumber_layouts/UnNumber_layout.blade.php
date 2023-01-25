@@ -44,7 +44,7 @@
             margin: 0 0.5rem 0.5rem 0;
         }
         .form-label{
-            width: 150px;
+            width: 250px;
         }
         .err_message{
             width: 200px;

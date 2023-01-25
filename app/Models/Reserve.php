@@ -25,6 +25,8 @@ class Reserve extends Model
         'edit_name',
         'Symbol',
         'Lengs',
+        'DateDiv',
+        'date_name',
       
         'updated_at',
     ];
