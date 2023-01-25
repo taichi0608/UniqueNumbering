@@ -25,6 +25,9 @@ class CreateReservesTable extends Migration
             $table->char('edit_name');//編集区分名
             $table->char('Symbol');//任意で付けた記号
             $table->integer('Lengs');//有効桁数
+
+            $table->integer('DateDiv');//日付区分番号
+            $table->char('date_name');//日付区分名
     
             $table->timestamps();
             $table->softDeletes();
