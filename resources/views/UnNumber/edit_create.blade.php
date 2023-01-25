@@ -43,6 +43,22 @@
                     @endif
                 </div>
 
+                <div class="d-flex align-items-center">
+                    <label for="date_code" class="form-label">日付区分</label>
+                    <select class="form-select" id="date_code" name="date_code">
+                        @foreach ($s_dates as $s_date)
+                            <option value="{{ $s_date->date_code }}" 
+                            @if(old('date_code') == $s_date -> name)
+                                selected
+                            @endif
+                            >{{ $s_date->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('edit_id')) 
+                        <div class="text-danger err_m">{{ $errors->first('date_code') }}</div>
+                    @endif
+                </div>
+
                 
                 <div class="mt-5 d-inline-block">
                 

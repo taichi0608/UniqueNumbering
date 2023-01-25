@@ -49,7 +49,7 @@
             <th>有効桁数</th>
             <th>編集区分</th>
             <th>日付区分</th>
-            <th>採番クリア区分</th>
+         
             <th></th>
           </tr>
         </thead>
@@ -65,7 +65,7 @@
        
           <td>{{ $UnNumber->DateDiv }}</td>
     
-          <td><a href="#" class="btn btn-primary btn-sm">編集・削除</a></td>
+         
         </tr>
         @endforeach
 

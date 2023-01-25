@@ -16,9 +16,9 @@ class DivEdit extends Model
     //可変項目
     protected $fillable = 
     [
-        'un_number_id',
-        'name',
-        'edit_code',
+        'edit_id',
+        'edit_name',
+        'edit_lenth',
         'memo',
         'updated_at',
     ];

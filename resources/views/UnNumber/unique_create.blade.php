@@ -19,15 +19,18 @@
 
                 <div class="d-flex align-items-center">
                     <label for="client_id" class="form-label">顧客番号</label>
-                    <input type="text" name="client_id" class="form-control" id="client_id" value="{{ $client -> client_id }}">
+                    <input type="hidden" name="client_id" class="form-control" id="client_id" value="{{ $client -> client_id }}">
+                    <p class="form-control">{{ $client -> client_id }}</p>
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="client_name" class="form-label">名前</label>
-                    <input type="text" name="client_name" class="form-control" id="client_name" value="{{ $client -> name }}">
+                    <input type="hidden" name="client_name" class="form-control" id="client_name" value="{{ $client -> name }}">
+                    <p class="form-control">{{ $client -> name }}</p>
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="tenant_code" class="form-label">利用会社</label>
-                    <input type="text" name="tenant_code" class="form-control" id="tenant_code" value="{{ $client -> tenant_code }}">
+                    <input type="hidden" name="tenant_code" class="form-control" id="tenant_code" value="{{ $client -> tenant_code }}">
+                    <p class="form-control">{{ $client -> tenant_code }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UnNumberController;
 use App\Http\Controllers\UniqueController;
+use App\Http\Controllers\EditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,9 @@ Route::get('/home', [UnNumberController::class, 'index'])->name('home');
 Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
    
     // 企業別の採番登録
-    Route::get('edit_create', [UnNumberController::class, 'edit_create'])->name('edit_create');
-    Route::post('edit_confirm', [UnNumberController::class, 'edit_confirm'])->name('edit_confirm');
-    Route::post('edit_store', [UnNumberController::class, 'edit_store'])->name('edit_store');
+    Route::get('edit_create', [EditController::class, 'edit_create'])->name('edit_create');
+    Route::post('edit_confirm', [EditController::class, 'edit_confirm'])->name('edit_confirm');
+    Route::post('edit_store', [EditController::class, 'edit_store'])->name('edit_store');
 
     //予約時の採番処理
     Route::get('unique_index', [UniqueController::class, 'unique_index'])->name('unique_index');

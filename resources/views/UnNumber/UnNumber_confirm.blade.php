@@ -2,7 +2,7 @@
 @section('UnNumber.UnNumber_layouts.UnNumber_layout.title', '採番マスタ：登録確認画面')
 
 @section('UnNumber.content')
-<div class="">{{ $unNumber }}</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -11,7 +11,6 @@
     
                 <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
                 <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="施設名A">
-                <input type="hidden" name="UpdatePerson" class="form-control" id="UpdatePerson" value="後でauthに変更">
 
                 <div class="d-flex justify-content-xl-between">
                     <div class="d-flex align-items-center">
@@ -46,32 +45,21 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="div_edit_id" class="form-label">編集区分</label>
-                    <input type="hidden" name="div_edit_id" class="form-control" id="div_edit_id" value="{{ $inputs['div_edit_id'] }}">
-                    <p class="form-control">{{ $inputs['div_edit_id'] }}</p>
-                    @if (isset($t_edit))
-                        <p class="err_message">{{ $t_edit }}</p>
-                    @endif     
+                    <label for="edit_id" class="form-label">編集区分 : ID</label>
+                    <input type="hidden" name="edit_id" class="form-control" id="edit_id" value="{{ $inputs['div_edit_id'] }}">
+                    <p class="form-control">{{ $t_edit }} : {{ $inputs['div_edit_id'] }}</p>
+
+                    <input type="hidden" name="edit_name" class="form-control" id="edit_name" value="{{ $t_edit }}">
                 </div>
 
                 <div class="d-flex align-items-center mb-2">
-                    <label for="DateDiv" class="form-label">日付区分</label>
+                    <label for="DateDiv" class="form-label">日付区分 : ID</label>
                     <input type="hidden" name="DateDiv" class="form-control" id="DateDiv" value="{{ $inputs['DateDiv'] }}">
-                    <p class="form-control">{{ $inputs['DateDiv'] }}</p>
-                    @if (isset($t_date))
-                        <p class="err_message">{{ $t_date }}</p>
-                    @endif
-                        
+                    <input type="hidden" name="date_name" class="form-control" id="date_name" value="{{ $t_date }}">  
+                    <p class="form-control">{{ $t_date }} : {{ $inputs['DateDiv'] }}</p>
                 </div>
 
-                <div class="d-flex align-items-center mb-2">
-                    <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
-                    <input type="hidden" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ $inputs['NumberClearDiv'] }}">
-                    <p class="form-control">{{ $inputs['NumberClearDiv'] }}</p>
-                    @if (isset($t_clear))
-                        <p class="err_message">{{ $t_clear }}</p>
-                    @endif
-                </div>
+                
 
                
 
