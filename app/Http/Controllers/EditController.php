@@ -30,7 +30,7 @@ class EditController extends Controller
 
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
         $t_edit = DB::table('div_edits')->where('edit_id', $inputs['edit_id'])->first();
-        $t_date = DB::table('div_dates')->where('date_code', $inputs['date_code'])->first();
+        $t_date = DB::table('div_dates')->where('date_id', $inputs['date_id'])->first();
 
         return view(
             'UnNumber.edit_confirm',compact('inputs','t_edit', 't_date')

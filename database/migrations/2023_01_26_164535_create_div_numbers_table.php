@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTenantBranchesTable extends Migration
+class CreateDivNumbersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTenantBranchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tenant_branches', function (Blueprint $table) {
+        Schema::create('div_numbers', function (Blueprint $table) {
             $table->id();
-            $table->integer('Tenant_id');
-            $table->integer('TenantBranchId')->unique();
-            $table->char('FaciliyName', 40);
+            $table->integer('number_id')->constrained();
+            $table->char('number_name');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateTenantBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tenant_branches');
+        Schema::dropIfExists('div_numbers');
     }
 }

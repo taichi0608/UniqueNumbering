@@ -3,7 +3,7 @@
 
 @section('UnNumber.content')
 <div class="container">
-  <h2>一覧表示画面</h2>
+  <h2>予約区分一覧画面</h2><br/>
   @if(session('err_msg'))
     <p class="text-danger">
         {{ session('err_msg') }}
@@ -44,36 +44,25 @@
         <thead style="background-color: #ffd900">
           <tr>
             <th>採番区分</th>
-            <th>初期値</th>
             <th>記号</th>
             <th>有効桁数</th>
             <th>編集区分</th>
             <th>日付区分</th>
-         
-            <th></th>
+           
           </tr>
         </thead>
         
         @foreach($UnNumbers as $UnNumber)
         <tr>
           <td>{{ $UnNumber->NumberDiv }}</td>
-          <td>{{ $UnNumber->InitNumber }}</td>
           <td>{{ $UnNumber->Symbol }}</td>
           <td>{{ $UnNumber->Lengs }}</td>
           <td>{{ $UnNumber->edit_name }}</td>
-        
-       
-          <td>{{ $UnNumber->DateDiv }}</td>
-    
-         
+          <td>{{ $UnNumber->date_name }}</td>
         </tr>
         @endforeach
-
-      
-
       </table>
-      
-     
+
     </div><!--テーブルここまで-->
     
     <!--ページネーション-->

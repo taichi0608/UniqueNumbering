@@ -33,7 +33,7 @@ class UnNumberRequest extends FormRequest
             'Symbol' => 'required|max:3',
             'Lengs' => 'required|numeric|max:1000',
             'div_edit_id' => 'required|numeric|exists:div_edits,edit_id|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
-            'DateDiv' => 'required|numeric|exists:div_dates,date_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'DateDiv' => 'required|numeric|exists:div_dates,date_id|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
            
             'UpdatePerson' => 'required|max:1000',
         ];

@@ -87,10 +87,10 @@
                     <select class="form-select" id="DateDiv" name="DateDiv">
                         @foreach ($s_dates as $s_date)
                             <option value="{{ $s_date->id }}" 
-                            @if(old('DateDiv') == $s_date->name)
+                            @if(old('DateDiv') == $s_date->date_name)
                                 selected
                             @endif
-                            >{{ $s_date->name }}</option>
+                            >{{ $s_date->date_name }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('DateDiv')) 

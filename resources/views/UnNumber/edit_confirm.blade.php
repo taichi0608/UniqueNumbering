@@ -56,9 +56,9 @@
                 
                 <div class="d-flex align-items-center">
                     <label for="InitNumber" class="form-label">日付区分</label>
-                    <input type="hidden" name="DateDiv" class="form-control" id="DateDiv" value="{{ $inputs['date_code'] }}">
-                    <input type="hidden" name="date_name" class="form-control" id="date_name" value="{{ $t_date->name }}">
-                    <p class="form-control">{{ $t_date->name }}</p>
+                    <input type="hidden" name="DateDiv" class="form-control" id="DateDiv" value="{{ $inputs['date_id'] }}">
+                    <input type="hidden" name="date_name" class="form-control" id="date_name" value="{{ $t_date->date_name }}">
+                    <p class="form-control">{{ $t_date->date_name }}</p>
                 </div>
                 
 
