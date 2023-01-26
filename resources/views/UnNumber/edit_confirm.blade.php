@@ -3,7 +3,8 @@
 
 @section('UnNumber.content')
 <div class="container">
-<h1>テスト確認画面</h1>
+<h2>テスト確認画面</h2>
+<br/>
 
     @if(session('err_msg'))
         <p class="text-danger">

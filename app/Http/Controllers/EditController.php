@@ -17,7 +17,6 @@ class EditController extends Controller
 
     public function edit_create()
     {
-        // $latestUmberId = UnNumber::where();
         $s_edits = DB::table('div_edits')->get();
         $s_dates = DB::table('div_dates')->get();
         return view(

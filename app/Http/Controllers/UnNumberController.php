@@ -47,10 +47,8 @@ class UnNumberController extends Controller
 
     public function create()
     {
-
         $s_dates = DB::table('div_dates')->get();
         $s_edits = DB::table('div_edits')->get();
-        // dd($s_date);
 
         return view(
             'UnNumber.UnNumber_create',compact('s_dates', 's_edits')
@@ -70,18 +68,11 @@ class UnNumberController extends Controller
         $t_edit = DB::table('div_edits')->where('edit_id', $inputs['div_edit_id'])->first()->edit_name;
         $t_date = DB::table('div_dates')->where('date_code', $inputs['DateDiv'])->first()->name;
         
-        // dd($t_date);
-        
         return view(
             'UnNumber.UnNumber_confirm',compact('inputs','t_date', 't_edit', )
         ); 
     }
 
-    /**
-     * 登録する 
-     * 
-     * @return view
-     */
     public function store(Request $request)
     {
         // データを受け取る
@@ -100,9 +91,5 @@ class UnNumberController extends Controller
         \Session::flash('err_msg' , '登録しました。');
         return redirect( route('home') );
     }
-
-
-
-
 
 }
