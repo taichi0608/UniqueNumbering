@@ -32,9 +32,9 @@ class UnNumberRequest extends FormRequest
             'InitNumber' => 'required|numeric|max:100000000',
             'Symbol' => 'required|max:3',
             'Lengs' => 'required|numeric|max:1000',
-            'div_edit_id' => 'required|numeric|exists:div_edits,edit_code|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+            'div_edit_id' => 'required|numeric|exists:div_edits,edit_id|max:1000',//div_editsテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
             'DateDiv' => 'required|numeric|exists:div_dates,date_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
-            'NumberClearDiv' => 'required|numeric|exists:number_clear_divs,clear_code|max:1000',//div_datesテーブルのNumberDiv_idカラムに入力された値が存在しないならNG
+           
             'UpdatePerson' => 'required|max:1000',
         ];
     }

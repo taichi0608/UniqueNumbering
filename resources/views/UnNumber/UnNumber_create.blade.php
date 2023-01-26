@@ -18,12 +18,15 @@
                 @csrf
                 <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="会社名A">
                 <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="施設名A">
-                <input type="hidden" name="UpdatePerson" class="form-control" id="UpdatePerson" value="後でauthに変更">
+
                 <div class="d-flex justify-content-xl-between">
                 
                     <div class="d-flex align-items-center">
                         <label for="NumberId" class="form-label align-middle">テナントコード</label>
                         <input type="text" name="NumberId" class="form-control" id="NumberId" value="1234">
+                        @if ($errors->has('NumberId')) 
+                        <div class="text-danger err_m">{{ $errors->first('NumberId') }}</div>
+                        @endif
                     </div>
 
                 </div>
@@ -67,7 +70,7 @@
                     <label for="div_edit_id" class="form-label">編集区分</label>
                     <select class="form-select" id="div_edit_id" name="div_edit_id">
                         @foreach ($s_edits as $s_edit)
-                            <option value="{{ $s_edit->edit_name }}" 
+                            <option value="{{ $s_edit->edit_id }}" 
                             @if(old('div_edit_id') == $s_edit->edit_name)
                                 selected
                             @endif
@@ -83,7 +86,7 @@
                     <label for="DateDiv" class="form-label">日付区分</label>
                     <select class="form-select" id="DateDiv" name="DateDiv">
                         @foreach ($s_dates as $s_date)
-                            <option value="{{ $s_date->name }}" 
+                            <option value="{{ $s_date->id }}" 
                             @if(old('DateDiv') == $s_date->name)
                                 selected
                             @endif
@@ -96,13 +99,6 @@
                 </div>
                 
 
-                <div class="d-flex align-items-center">
-                    <label for="NumberClearDiv" class="form-label">採番クリア区分</label>
-                    <input type="text" name="NumberClearDiv" class="form-control" id="NumberClearDiv" value="{{ old('NumberClearDiv') }}">
-                    @if ($errors->has('NumberClearDiv')) 
-                        <div class="text-danger err_m">{{ $errors->first('NumberClearDiv') }}</div>
-                    @endif
-                </div>
 
                 <div class="mt-5 d-inline-block">
                     <a class="btn btn-secondary" href="{{ route('UnNumber.index') }}">

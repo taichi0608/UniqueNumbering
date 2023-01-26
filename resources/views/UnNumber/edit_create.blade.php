@@ -3,7 +3,8 @@
 
 @section('UnNumber.content')
 <div class="container">
-<h1>テスト登録画面</h1>
+<h2>オリジナル編集区分作成画面</h2>
+<br/>
 
     @if(session('err_msg'))
         <p class="text-danger">
@@ -40,6 +41,22 @@
                     </select>
                     @if ($errors->has('edit_id')) 
                         <div class="text-danger err_m">{{ $errors->first('edit_id') }}</div>
+                    @endif
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="date_code" class="form-label">日付区分</label>
+                    <select class="form-select" id="date_code" name="date_code">
+                        @foreach ($s_dates as $s_date)
+                            <option value="{{ $s_date->date_code }}" 
+                            @if(old('date_code') == $s_date -> name)
+                                selected
+                            @endif
+                            >{{ $s_date->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('edit_id')) 
+                        <div class="text-danger err_m">{{ $errors->first('date_code') }}</div>
                     @endif
                 </div>
 
