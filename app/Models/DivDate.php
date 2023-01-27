@@ -16,9 +16,8 @@ class DivDate extends Model
     //可変項目
     protected $fillable = 
     [
-     
-        'date_code',
-        'name',
+        'date_id',
+        'date_name',
         'memo',
         'updated_at',
     ];

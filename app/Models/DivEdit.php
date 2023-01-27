@@ -18,7 +18,7 @@ class DivEdit extends Model
     [
         'edit_id',
         'edit_name',
-        'edit_lenth',
+        'edit_length',
         'memo',
         'updated_at',
     ];

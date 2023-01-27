@@ -32,6 +32,7 @@ class TNumberInfomationsSeeder extends Seeder
             'date_name' => '会員登録日',
 
             'symbol' => 'A',
+            'count_id' => '1',
 
             'created_at'=>'2033-11-16 14:26:37',
         ]);
@@ -53,6 +54,7 @@ class TNumberInfomationsSeeder extends Seeder
             'date_name' => 'ホテルデイト',
 
             'symbol' => 'BB',
+            'count_id' => '12',
 
             'created_at'=>'2033-11-26 14:26:37',
         ]);
@@ -74,6 +76,7 @@ class TNumberInfomationsSeeder extends Seeder
             'date_name' => '会員登録日',
 
             'symbol' => 'CCC',
+            'count_id' => '31',
 
             'created_at'=>'2033-11-16 14:26:37',
         ]);

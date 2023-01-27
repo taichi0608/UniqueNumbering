@@ -16,12 +16,11 @@ class Tenant extends Model
     //可変項目
     protected $fillable = 
     [
-        'TenantId',
-        'CompanyName',
+        'tenant_id',
+        'tenant_name',
+        'tenantBranch_name',
         'updated_at',
     ];
 
-    public function TenantBranches(){
-        return $this->hasMany(TenantBranch::class,'Tenant_id');
-    }
+    
 }

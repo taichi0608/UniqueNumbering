@@ -29,8 +29,9 @@ class CreateTNumberInformationsTable extends Migration
 
             $table->integer('date_id');
             $table->char('date_name');
-
+            
             $table->char('symbol', 3);
+            $table->integer('count_id');
 
             $table->timestamps();
         });
