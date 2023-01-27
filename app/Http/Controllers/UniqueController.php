@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserve;
 use App\Models\UnNumber;
+use App\Models\TNumberInformation;
 use DB;
 
 class UniqueController extends Controller
@@ -20,7 +21,9 @@ class UniqueController extends Controller
     {
         $inputs = $request->all();
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->first();
-        $edits = DB::table('un_numbers')->where('NumberId',[$client->tenant_code])->get();
+        // dd($client);
+        $edits = DB::table('t_number_informations')->where('tenant_id',[$client->tenant_id])->get();
+     
 
         return view(
             'UnNumber.unique_create', compact('client','edits')
@@ -36,21 +39,21 @@ class UniqueController extends Controller
         // $change_number = $inputs['client_id'];
 
         // ➀ 各種予約項目ごとに最新の番号を取得する処理
-        $numberSearch = new UnNumber;
+        $numberSearch = new TNumberInformation;
         $change_number = $numberSearch->numberSearch($inputs);
         
         // ➁ un_numbersテーブルのテナントコードと予約名称で検索し区分特定する処理
-        $divisionSearch = new UnNumber;
+        $divisionSearch = new TNumberInformation;
         $edit = $divisionSearch->divisionSearch($inputs);
         $edit_id = $edit->edit_id;//編集区分を特定
-        $date_id = $edit->DateDiv;//日付区分を特定
+        $date_id = $edit->date_id;//日付区分を特定
         
         // ➂ 日付区分によって表示する日付を変更する処理
-        $dateOrder = new UnNumber;
+        $dateOrder = new TNumberInformation;
         $dateTime = $dateOrder->dateOrder($inputs, $date_id);
 
         // ➃ 編集区分によって採番するパターンを変更する処理
-        $division = new UnNumber;
+        $division = new TNumberInformation;
         $reserve_id = $division->division($edit_id, $change_number, $edit, $dateTime);
       
         return view(
@@ -61,12 +64,13 @@ class UniqueController extends Controller
     public function unique_store(Request $request)
     {
         $reserveInputs = $request->all();
+        // dd($reserveInputs);
         
+        reserve::create($reserveInputs);
+        DB::commit();
         DB::beginTransaction();
         try{
             // データを登録
-            reserve::create($reserveInputs);
-            DB::commit();
         }catch(\Throwable $e){
             DB::rollback();
             abort(500);

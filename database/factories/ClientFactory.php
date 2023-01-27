@@ -23,9 +23,9 @@ class ClientFactory extends Factory
         
         return [
             //
-            'name' => $this->faker->name,
+            'client_name' => $this->faker->name,
             'client_id' => $this->faker->unique()->numberBetween(1, 10000000),
-            'tenant_code' => $tenant,
+            'tenant_id' => $tenant,
 
             //日付区分の為に簡易で作成
             'registed_at'=> now(),

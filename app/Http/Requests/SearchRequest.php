@@ -24,7 +24,7 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'searchId' => 'numeric|exists:un_numbers,NumberId|max:100000000',
+            'searchId' => 'numeric|exists:t_number_informations,tenant_id|max:100000000',
         ];
     }
 }
