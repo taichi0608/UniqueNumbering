@@ -16,8 +16,8 @@ class DivDatesSeeder extends Seeder
     {
         DB::table('div_dates')->insert([
             'id' => 1,
-            'date_code' => '1',
-            'name' => 'サーバー日付',
+            'date_id' => '1',
+            'date_name' => 'サーバー日付',
 
             'memo' => '会員登録された日',
             'created_at'=>'2033-11-16 14:26:37',
@@ -25,8 +25,8 @@ class DivDatesSeeder extends Seeder
         ]);
         DB::table('div_dates')->insert([
             'id' => 2,
-            'date_code' => '2',
-            'name' => 'ホテルデイト',
+            'date_id' => '2',
+            'date_name' => 'ホテルデイト',
 
             'memo' => '予約日',
             'created_at'=>'2033-11-16 14:26:37',
@@ -34,8 +34,8 @@ class DivDatesSeeder extends Seeder
         ]);
         DB::table('div_dates')->insert([
             'id' => 3,
-            'date_code' => '3',
-            'name' => 'チェックイン日',
+            'date_id' => '3',
+            'date_name' => 'チェックイン日',
 
             'memo' => 'チェックインされた日',
             'created_at'=>'2033-11-16 14:26:37',

@@ -16,12 +16,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(UsersSeeder::class);
         $this->call(TenantsSeeder::class);
-        $this->call(TenantsBranchSeeder::class);
-        
-        $this->call(UnNumbersSeeder::class);
+
+        $this->call(UnNumbersSeeder::class);//最終消す
+
+        $this->call(TNumberInfomationsSeeder::class);
 
         $this->call(DivEditsSeeder::class);
         $this->call(DivDatesSeeder::class);
+        $this->call(DivNumberSeeder::class);
         
         $this->call(CliantSeeder::class);
     }

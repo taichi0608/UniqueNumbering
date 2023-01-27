@@ -22,11 +22,15 @@ class UnNumberController extends Controller
         $searchId = $request->input('searchId');
         $query = UnNumber::query();
 
+        
+
         //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
         if (isset($searchId)) {
             $query->where('NumberId',self::escapeLike($searchId));
-            $UnNumbers = $query->orderBy('updated_at', 'asc')->paginate(5);//$queryをupdated_atの昇順に並び替え 
+            $UnNumbers = $query->orderBy('created_at', 'desc')->paginate(5);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
+     
             $tenantName = $UnNumbers->first();//会社名と施設名を表示させるために１件だけ取得
+
             return view('UnNumber.UnNumber_index', [
                 'UnNumbers' => $UnNumbers,
                 'searchId' => $searchId,
@@ -66,7 +70,7 @@ class UnNumberController extends Controller
       
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
         $t_edit = DB::table('div_edits')->where('edit_id', $inputs['div_edit_id'])->first()->edit_name;
-        $t_date = DB::table('div_dates')->where('date_code', $inputs['DateDiv'])->first()->name;
+        $t_date = DB::table('div_dates')->where('date_id', $inputs['DateDiv'])->first()->date_name;
         
         return view(
             'UnNumber.UnNumber_confirm',compact('inputs','t_date', 't_edit', )

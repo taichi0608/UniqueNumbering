@@ -45,18 +45,18 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="date_code" class="form-label">日付区分</label>
-                    <select class="form-select" id="date_code" name="date_code">
+                    <label for="date_id" class="form-label">日付区分</label>
+                    <select class="form-select" id="date_id" name="date_id">
                         @foreach ($s_dates as $s_date)
-                            <option value="{{ $s_date->date_code }}" 
-                            @if(old('date_code') == $s_date -> name)
+                            <option value="{{ $s_date->date_id }}" 
+                            @if(old('date_id') == $s_date -> date_name)
                                 selected
                             @endif
-                            >{{ $s_date->name }}</option>
+                            >{{ $s_date->date_name }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('edit_id')) 
-                        <div class="text-danger err_m">{{ $errors->first('date_code') }}</div>
+                        <div class="text-danger err_m">{{ $errors->first('date_id') }}</div>
                     @endif
                 </div>
 

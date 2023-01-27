@@ -15,8 +15,8 @@ class CreateDivDatesTable extends Migration
     {
         Schema::create('div_dates', function (Blueprint $table) {
             $table->id();
-            $table->integer('date_code')->constrained();
-            $table->char('name');
+            $table->integer('date_id')->constrained();
+            $table->char('date_name');
     
             $table->text('memo');
             $table->timestamps();
