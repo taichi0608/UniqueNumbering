@@ -24,20 +24,20 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="client_name" class="form-label">名前</label>
-                    <input type="hidden" name="client_name" class="form-control" id="client_name" value="{{ $client -> name }}">
-                    <p class="form-control">{{ $client -> name }}</p>
+                    <input type="hidden" name="client_name" class="form-control" id="client_name" value="{{ $client -> client_name }}">
+                    <p class="form-control">{{ $client -> client_name }}</p>
                 </div>
                 <div class="d-flex align-items-center">
-                    <label for="tenant_code" class="form-label">利用会社</label>
-                    <input type="hidden" name="tenant_code" class="form-control" id="tenant_code" value="{{ $client -> tenant_code }}">
-                    <p class="form-control">{{ $client -> tenant_code }}</p>
+                    <label for="tenant_id" class="form-label">利用会社</label>
+                    <input type="hidden" name="tenant_id" class="form-control" id="tenant_id" value="{{ $client -> tenant_id }}">
+                    <p class="form-control">{{ $client -> tenant_id }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="NumberDiv" class="form-label">編集区分</label>
-                    <select class="form-select" id="NumberDiv" name="NumberDiv">
+                    <label for="number_name" class="form-label">編集区分</label>
+                    <select class="form-select" id="number_name" name="number_name">
                         @foreach ($edits as $edit)
-                            <option value="{{ $edit->NumberDiv }}">{{ $edit->NumberDiv }}</option>
+                            <option value="{{ $edit->number_name }}">{{ $edit->number_name }}</option>
                         @endforeach
                     </select>
                 </div>

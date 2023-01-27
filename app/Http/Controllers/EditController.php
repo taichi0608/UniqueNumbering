@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UnNumberRequest;
 use App\Http\Requests\SearchRequest;
+use App\Models\TNumberInformation;
 use App\Models\UnNumber;
 use App\Models\DivDate;
 use App\Models\DivEdit;
@@ -44,7 +45,7 @@ class EditController extends Controller
         // データを登録
         DB::beginTransaction();
         try{
-            UnNumber::create($UnNumberInputs);
+            TNumberInformation::create($UnNumberInputs);
             DB::commit();
         }catch(\Throwable $e){
             DB::rollback();

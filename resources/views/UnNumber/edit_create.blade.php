@@ -19,13 +19,13 @@
                 @csrf
 
                 <div class="d-flex align-items-center">
-                    <label for="InitNumber" class="form-label">登録名称</label>
-                    <input type="text" name="NumberDiv" class="form-control" id="NumberDiv" value="{{ old('NumberDiv') }}">
+                    <label for="number_name" class="form-label">登録名称</label>
+                    <input type="text" name="number_name" class="form-control" id="number_name" value="{{ old('number_name') }}">
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="Symbol" class="form-label">記号</label>
-                    <input type="text" name="Symbol" class="form-control" id="Symbol" value="{{ old('Symbol') }}">
+                    <label for="symbol" class="form-label">記号</label>
+                    <input type="text" name="symbol" class="form-control" id="symbol" value="{{ old('symbol') }}">
                 </div>
 
                 <div class="d-flex align-items-center">

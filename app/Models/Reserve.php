@@ -15,17 +15,17 @@ class Reserve extends Model
     //可変項目
     protected $fillable = 
     [
-        'NumberDiv',
+        'number_name',
         'reserve_id',
-        'InitNumber',
+        'change_number',
         'client_id',
         'client_name',
-        'TenantCode',
+        'tenant_id',//
         'edit_id',
         'edit_name',
-        'Symbol',
-        'Lengs',
-        'DateDiv',
+        'symbol',
+        'edit_length',
+        'date_id',
         'date_name',
       
         'updated_at',

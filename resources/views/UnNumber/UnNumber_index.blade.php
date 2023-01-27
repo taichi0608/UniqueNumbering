@@ -34,8 +34,8 @@
     <div class="productTable">
       <div class="d-flex">
         <div class="">
-          <p class="">テナント会社名：{{ $tenantName['TenantCode'] }}</p>
-          <p class="">テナント施設名：{{ $tenantName['TenantBranch'] }}</p>
+          <p class="">テナント会社名：{{ $tenantName['tenant_name'] }}</p>
+          <p class="">テナント施設名：{{ $tenantName['tenantBranch_name'] }}</p>
         </div> 
       </div>
       <p>全{{ $UnNumbers->count() }}件</p>
@@ -44,6 +44,7 @@
         <thead style="background-color: #ffd900">
           <tr>
             <th>採番区分</th>
+            <th>初期値</th>
             <th>記号</th>
             <th>有効桁数</th>
             <th>編集区分</th>
@@ -54,9 +55,10 @@
         
         @foreach($UnNumbers as $UnNumber)
         <tr>
-          <td>{{ $UnNumber->NumberDiv }}</td>
-          <td>{{ $UnNumber->Symbol }}</td>
-          <td>{{ $UnNumber->Lengs }}</td>
+          <td>{{ $UnNumber->number_name }}</td>
+          <td>{{ $UnNumber->count_id }}</td>
+          <td>{{ $UnNumber->symbol }}</td>
+          <td>{{ $UnNumber->edit_length }}</td>
           <td>{{ $UnNumber->edit_name }}</td>
           <td>{{ $UnNumber->date_name }}</td>
         </tr>

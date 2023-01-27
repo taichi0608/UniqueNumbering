@@ -15,9 +15,9 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('client_name');
             $table->integer('client_id');//採番前の番号
-            $table->integer('tenant_code');//テナントコード
+            $table->integer('tenant_id');//テナントコード
             $table->dateTime('registed_at');//会員登録日
             $table->dateTime('reserved_at');//予約日
             $table->dateTime('checked_at');//チェックイン日
