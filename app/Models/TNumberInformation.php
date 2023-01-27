@@ -46,6 +46,7 @@ class TNumberInformation extends Model
             ->orderBy('created_at', 'DESC')
             ->first();
         
+            
         // データベースにデータがあれば＋１、なければ１を代入する
         if($reserveNumbers != null){
             $reserveNumber = $reserveNumbers -> change_number;

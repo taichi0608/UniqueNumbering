@@ -21,8 +21,8 @@ class UniqueController extends Controller
     {
         $inputs = $request->all();
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->first();
-        // dd($client);
         $edits = DB::table('t_number_informations')->where('tenant_id',[$client->tenant_id])->get();
+        dd($inputs);
      
 
         return view(
@@ -66,11 +66,11 @@ class UniqueController extends Controller
         $reserveInputs = $request->all();
         // dd($reserveInputs);
         
-        reserve::create($reserveInputs);
-        DB::commit();
         DB::beginTransaction();
         try{
             // データを登録
+            reserve::create($reserveInputs);
+            DB::commit();
         }catch(\Throwable $e){
             DB::rollback();
             abort(500);
