@@ -15,6 +15,7 @@
                 <li class="nav_item {{ (url()->current() == route('UnNumber.create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.create') }}">新規登録</a></li>
                 <li class="nav_item {{ (url()->current() == route('UnNumber.edit_create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.edit_create') }}">編集区分作成</a></li>
                 <li class="nav_item {{ (url()->current() == route('UnNumber.unique_index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.unique_index') }}">採番登録</a></li>
+                <li class="nav_item {{ (url()->current() == route('UnNumber.system_index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.system_index') }}">採番機能</a></li>
             </ul>
 
 

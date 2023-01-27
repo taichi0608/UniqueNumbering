@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UnNumberController;
 use App\Http\Controllers\UniqueController;
 use App\Http\Controllers\EditController;
+use App\Http\Controllers\SystemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,11 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::post('unique_confirm', [UniqueController::class, 'unique_confirm'])->name('unique_confirm');
     Route::post('unique_store', [UniqueController::class, 'unique_store'])->name('unique_store');
 
-
+    // 採番処理のみ
+    Route::get('system_index', [SystemController::class, 'system_index'])->name('system_index');
+    Route::post('system_create', [SystemController::class, 'system_create'])->name('system_create');
+    Route::post('system_confirm', [SystemController::class, 'system_confirm'])->name('system_confirm');
+    Route::post('system_store', [SystemController::class, 'system_store'])->name('system_store');
 
 
 
