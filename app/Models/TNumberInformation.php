@@ -29,6 +29,8 @@ class TNumberInformation extends Model
         'date_name',
         'symbol',
         'count_id',
+        'newest_id',
+        
         'updated_at',
 
     ];

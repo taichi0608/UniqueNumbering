@@ -17,10 +17,12 @@ class Reserve extends Model
     [
         'number_name',
         'reserve_id',
-        'change_number',
         'client_id',
         'client_name',
-        'tenant_id',//
+
+        //不要かも
+        'change_number',
+        'tenant_id',
         'edit_id',
         'edit_name',
         'symbol',

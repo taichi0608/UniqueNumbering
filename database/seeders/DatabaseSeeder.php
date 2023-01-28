@@ -17,8 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(TenantsSeeder::class);
 
-        $this->call(UnNumbersSeeder::class);//最終消す
-
         $this->call(TNumberInfomationsSeeder::class);
 
         $this->call(DivEditsSeeder::class);
