@@ -30,8 +30,9 @@ class CreateTNumberInformationsTable extends Migration
             $table->integer('date_id');
             $table->char('date_name');
             
-            $table->char('symbol', 3);
-            $table->integer('count_id');
+            $table->char('symbol', 3)->nullable();
+            $table->integer('count_id')->nullable();
+            $table->char('newest_id')->nullable();// 最新の採番後の番号（カウントIDとリング）
 
             $table->timestamps();
         });
