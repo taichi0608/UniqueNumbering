@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DivEdit;
+use App\Models\DateEdit;
+use App\Models\NumberEdit;
 
 use DB;
 
@@ -35,6 +38,19 @@ class TNumberInformation extends Model
 
     ];
 
+    // リレーション関係
+    Public function DivEdits()
+    {
+        return $this->hasOne(DivEdit::class, 'edit_id','edit_id');
+    }
+    Public function DivDates()
+    {
+        return $this->hasOne(DivDate::class, 'date_id','date_id');
+    }
+    Public function NumberDivs()
+    {
+        return $this->hasOne(NumberDiv::class, 'number_id','number_id');
+    }
 
 
     // 予約番号を発行するまでの処理 --------------------

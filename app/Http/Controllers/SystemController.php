@@ -22,7 +22,6 @@ class SystemController extends Controller
         // ➀ 採番区分特定の処理 
         $inputs = $request->all();
 
-       
 
         // $client は前後の流れが不明なので暫定でこの形
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->orderBy('updated_at', 'desc')->first();

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Reserve;
+use App\Models\DivEdit;
+use App\Models\TNumberInformation;
 use DB;
 
 class System extends Model

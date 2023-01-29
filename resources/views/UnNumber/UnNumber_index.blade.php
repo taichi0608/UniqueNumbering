@@ -54,11 +54,13 @@
         </thead>
         
         @foreach($UnNumbers as $UnNumber)
+   
+        {{-- @php dd($UnNumber->DivEdits);@endphp --}}
         <tr>
           <td>{{ $UnNumber->number_name }}</td>
           <td>{{ $UnNumber->newest_id }}</td>
           <td>{{ $UnNumber->symbol }}</td>
-          <td>{{ $UnNumber->edit_length }}</td>
+          <td>{{ $UnNumber->DivEdits->edit_length }}</td>
           <td>{{ $UnNumber->edit_name }}</td>
           <td>{{ $UnNumber->date_name }}</td>
         </tr>
@@ -68,10 +70,7 @@
     </div><!--テーブルここまで-->
     
     <!--ページネーション-->
-    <div class="d-flex justify-content-center">
-      {{-- appendsでカテゴリを選択したまま遷移 --}}
-      {{ $UnNumbers->appends(request()->input())->links() }}
-    </div><!--ページネーションここまで-->
+
     @endif
 
     @if (!empty($UnNumbers))

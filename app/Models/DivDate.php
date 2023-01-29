@@ -19,8 +19,12 @@ class DivDate extends Model
         'date_id',
         'date_name',
         'memo',
-        'updated_at',
+
     ];
+
+    public function TNumberInformations(){
+        return $this->belongsTo(TNumberInformation::class, 'date_id','date_id');
+    }
 
 
 
